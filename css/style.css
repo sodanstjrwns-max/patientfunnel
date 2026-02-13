@@ -334,7 +334,7 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .cases-subsection,
 .webinar-subsection { padding: var(--space-24) 0; position: relative; }
 .cases-subsection--dark,
-.webinar-subsection--dark { background: var(--bg-dark); color: var(--text-primary); }
+.webinar-subsection--dark { background: var(--bg-dark); color: var(--text-primary); margin-top: var(--space-16); }
 .cases-subsection--dark p,
 .webinar-subsection--dark p { color: var(--text-secondary); }
 .cases-subsection--dark strong,

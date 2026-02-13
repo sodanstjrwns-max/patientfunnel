@@ -1,0 +1,10 @@
+{
+  "error": true,
+  "url": "https://www.genspark.ai/images/og-image.jpg",
+  "statusCode": 404,
+  "statusMessage": "Page not found: /images/og-image.jpg",
+  "message": "Page not found: /images/og-image.jpg",
+  "data": {
+    "path": "/images/og-image.jpg"
+  }
+}

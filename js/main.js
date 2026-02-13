@@ -329,34 +329,29 @@
     window.closePDFModal = () => {
         const modal = $('#pdfModal');
         if (modal?.classList.contains('active')) { modal.classList.remove('active'); document.body.style.overflow = ''; }
-        const startView = $('#downloadStartView');
-        const completeView = $('#downloadCompleteView');
-        if (startView) startView.style.display = '';
-        if (completeView) completeView.style.display = 'none';
     };
     window.closeExitIntent = () => {
         const modal = $('#exitIntentModal');
         if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
     };
-    // 🎯 핵심: 게이트 없이 바로 다운로드 + 웨비나 전환
+    
     window.downloadGuide = () => {
-        const link = document.createElement('a');
-        link.href = PDF_GUIDE_URL;
-        link.download = 'Patient_Funnel_병원경영가이드.pdf';
-        link.target = '_blank';
-        link.rel = 'noopener';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        window.open(PDF_GUIDE_URL, '_blank');
         openPDFModal();
-        setTimeout(() => {
-            const startView = $('#downloadStartView');
-            const completeView = $('#downloadCompleteView');
-            if (startView) startView.style.display = 'none';
-            if (completeView) completeView.style.display = '';
-        }, 1500);
-        try { let c = parseInt(localStorage.getItem('pf_dl_count') || '12847'); localStorage.setItem('pf_dl_count', (++c).toString()); } catch(e) {}
-        if (typeof gtag === 'function') { gtag('event', 'guide_download', { event_category: 'engagement', event_label: 'PDF Guide Download', value: 1 }); }
+
+        try {
+            let count = parseInt(localStorage.getItem('pf_dl_count') || '12847');
+            count++;
+            localStorage.setItem('pf_dl_count', count.toString());
+        } catch(e) {}
+
+        if (typeof gtag === 'function') {
+            gtag('event', 'guide_download', {
+                event_category: 'engagement',
+                event_label: 'PDF Guide Download',
+                value: 1
+            });
+        }
     };
 
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closePDFModal(); closeExitIntent(); } });
@@ -370,9 +365,14 @@
         });
     };
 
-    const initForms = () => {
+    const initDownloadStats = () => {
         const countEl = document.querySelector('.ebook-download__stats [data-count]');
-        if (countEl) { try { const s = localStorage.getItem('pf_dl_count'); if (s) countEl.setAttribute('data-count', s); } catch(e) {} }
+        if (countEl) {
+            try {
+                const stored = localStorage.getItem('pf_dl_count');
+                if (stored) countEl.setAttribute('data-count', stored);
+            } catch(e) {}
+        }
     };
 
     const fetchBlogPosts = async () => {
@@ -661,7 +661,7 @@
         initStageCards();
         initFunnelTimeline();
         initFAQ();
-        initForms();
+        initDownloadStats();
         initKnowledgeHub();
         initExitIntent();
         initCursorGlow();

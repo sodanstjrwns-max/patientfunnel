@@ -378,20 +378,25 @@
     const fetchBlogPosts = async () => {
         try {
             const rssUrl = 'https://blog.patientfunnel.kr/rss';
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 3000);
             const proxies = [
-                `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`,
-                `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`
+                `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`,
+                `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`,
+                `https://api.codetabs.com/v1/proxy?quest=${rssUrl}`
             ];
             let xml = null;
             for (const url of proxies) {
                 try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 8000);
                     const r = await fetch(url, { signal: controller.signal, mode: 'cors' }).catch(() => null);
-                    if (r?.ok) { xml = await r.text(); break; }
+                    clearTimeout(timeoutId);
+                    if (r?.ok) {
+                        let text = await r.text();
+                        if (url.includes('/get?')) { try { text = JSON.parse(text).contents; } catch(e) {} }
+                        if (text.includes('<item>')) { xml = text; break; }
+                    }
                 } catch { continue; }
             }
-            clearTimeout(timeoutId);
             if (!xml) throw new Error('Proxy failed');
 
             const doc = new DOMParser().parseFromString(xml, 'text/xml');

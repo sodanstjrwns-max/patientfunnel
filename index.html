@@ -68,7 +68,26 @@
     <link rel="stylesheet" href="css/style.css">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js" defer></script>
+    
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNCQCP3K3P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QNCQCP3K3P', {
+            page_title: document.title,
+            send_page_view: true
+        });
+    </script>
+    
+    <!-- Amplitude -->
+    <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.0-min.js.gz"></script>
+    <script>
+        window.amplitude && amplitude.init('835c50726f6370b356f0c172536b5e5a', {
+            autocapture: { elementInteractions: true, pageViews: true, sessions: true, formInteractions: true }
+        });
+    </script>
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
     
@@ -368,7 +387,7 @@
                 <a href="https://dentalfunnel.liveklass.com/" target="_blank" rel="noopener" class="btn btn--glow btn--lg">
                     <i class="fas fa-play-circle"></i> 지금 시작하기
                 </a>
-                <button class="btn btn--glass btn--lg" onclick="downloadGuide()" type="button">
+                <button class="btn btn--glass btn--lg" onclick="downloadGuide('hero')" type="button">
                     <i class="fas fa-file-pdf"></i> 무료 병원 경영 가이드 받기 (17p PDF)
                 </button>
             </div>
@@ -882,7 +901,7 @@
                             </ul>
                         </div>
                         <div class="ebook-download" id="ebookDownload">
-                            <button class="btn btn--glow btn--block btn--xl ebook-download__btn" onclick="downloadGuide()" type="button">
+                            <button class="btn btn--glow btn--block btn--xl ebook-download__btn" onclick="downloadGuide('resources')" type="button">
                                 <i class="fas fa-download"></i> 무료 가이드 바로 받기 <small>(17p PDF)</small>
                             </button>
                             <p class="ebook-download__note"><i class="fas fa-lock"></i> 이메일 입력 없이 즉시 다운로드됩니다</p>
@@ -923,7 +942,7 @@
             <h3 id="contact-title" data-reveal>대표원장님, 궁금하신 점이 있으신가요?</h3>
             <p data-reveal>우리 병원에 페이션트 퍼널이 맞는지, 어디서부터 시작해야 할지 고민되신다면 문의주세요.</p>
             <div class="contact-buttons" data-reveal>
-                <a href="/cdn-cgi/l/email-protection#9dfef2f3e9fcfee9ddedfce9f4f8f3e9fbe8f3f3f8f1b3f6ef" class="btn btn--glass btn--lg"><i class="fas fa-envelope"></i> 이메일 문의</a>
+                <a href="/cdn-cgi/l/email-protection#beddd1d0cadfddcafecedfcad7dbd0cad8cbd0d0dbd290d5cc" class="btn btn--glass btn--lg"><i class="fas fa-envelope"></i> 이메일 문의</a>
                 <a href="https://dentalfunnel.liveklass.com/" target="_blank" rel="noopener" class="btn btn--glow btn--lg"><i class="fas fa-comments"></i> 궁금한 건 라이브에서 물어보기</a>
             </div>
         </div>
@@ -937,7 +956,7 @@
                 <div class="footer__brand"><strong class="footer__brand-name">Patient Funnel</strong><p>환자 경험 중심 병원 경영 시스템</p><p class="footer__tagline">Patient-experience operating system for private clinics.</p></div>
                 <nav class="footer__nav" aria-label="탐색"><span class="footer__nav-title">Explore</span><ul><li><a href="#about">About 문석준</a></li><li><a href="#knowledge">Knowledge Hub</a></li><li><a href="#webinar">Live Webinar</a></li><li><a href="#cases">Case Studies</a></li></ul></nav>
                 <nav class="footer__nav" aria-label="자료"><span class="footer__nav-title">Resources</span><ul><li><a href="#resources">무료 가이드 받기</a></li><li><a href="#faq">FAQ</a></li><li><a href="https://blog.patientfunnel.kr" target="_blank" rel="noopener">인블로그</a></li><li><a href="#contact">Contact</a></li></ul></nav>
-                <div class="footer__social"><span class="footer__nav-title">Connect</span><div class="social-icons"><a href="https://www.youtube.com/channel/UCv5HqXYWzG874tgaOBpJMVw" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a href="https://blog.patientfunnel.kr" target="_blank" rel="noopener" aria-label="블로그"><i class="fas fa-blog"></i></a><a href="https://pf.kakao.com/_xkxnMn" target="_blank" rel="noopener" aria-label="카카오톡"><i class="fas fa-comment"></i></a><a href="/cdn-cgi/l/email-protection#395a56574d585a4d7949584d505c574d5f4c57575c5517524b" aria-label="이메일"><i class="fas fa-envelope"></i></a></div></div>
+                <div class="footer__social"><span class="footer__nav-title">Connect</span><div class="social-icons"><a href="https://www.youtube.com/channel/UCv5HqXYWzG874tgaOBpJMVw" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a href="https://blog.patientfunnel.kr" target="_blank" rel="noopener" aria-label="블로그"><i class="fas fa-blog"></i></a><a href="https://pf.kakao.com/_xkxnMn" target="_blank" rel="noopener" aria-label="카카오톡"><i class="fas fa-comment"></i></a><a href="/cdn-cgi/l/email-protection#fa9995948e9b998eba8a9b8e939f948e9c8f94949f96d49188" aria-label="이메일"><i class="fas fa-envelope"></i></a></div></div>
             </div>
             <div class="footer__bottom"><p>&copy; 2024-2026 Patient Funnel. All rights reserved.</p><p>서울비디치과 · 문석준</p></div>
         </div>
@@ -992,7 +1011,7 @@
             <p class="exit-desc">"광고비는 늘었는데 매출은 그대로..."<br>"상담하면 '생각해볼게요'만 듣는다..."</p>
             <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:var(--space-5);">150개 병원이 평균 매출 80% 성장한<br>10단계 프레임워크를 <strong>17페이지로 정리</strong>했습니다.</p>
             <div class="exit-benefits"><span><i class="fas fa-check"></i> 우리 병원 병목이 어딘지 바로 알 수 있는 30항목 체크리스트</span><span><i class="fas fa-check"></i> 3~8개월 만에 매출 62~160% 성장한 실전 사례 4건</span><span><i class="fas fa-check"></i> 출력해서 팀 미팅에 바로 쓰는 퍼널 진단 워크시트</span></div>
-            <button class="btn btn--glow btn--lg btn--block" onclick="closeExitIntent(); downloadGuide();"><i class="fas fa-download"></i> 지금 바로 다운로드 (무료)</button>
+            <button class="btn btn--glow btn--lg btn--block" onclick="closeExitIntent(); downloadGuide('exit_intent');"><i class="fas fa-download"></i> 지금 바로 다운로드 (무료)</button>
             <button class="exit-skip" onclick="closeExitIntent()">다음에 볼게요</button>
         </div>
     </div>

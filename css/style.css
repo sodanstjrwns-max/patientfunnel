@@ -380,6 +380,13 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .section--dark .section__desc { color: var(--text-secondary); }
 .section__cta { text-align: center; margin-top: var(--space-12); }
 .section__cta p { margin-bottom: var(--space-6); }
+.section__cta--micro { margin-top: var(--space-16); padding: var(--space-10) var(--space-6); background: linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(212,175,55,0.02) 100%); border: 1px solid rgba(212,175,55,0.2); border-radius: var(--radius-2xl); }
+.micro-cta__question { font-size: 1.25rem; font-weight: 700; color: var(--text-dark-primary); margin-bottom: var(--space-2); }
+.micro-cta__question i { color: var(--gold); margin-right: var(--space-2); }
+.micro-cta__sub { color: var(--text-dark-secondary); font-size: 0.9375rem; margin-bottom: var(--space-6); }
+.section--dark .micro-cta__question { color: var(--text-primary); }
+.section--dark .micro-cta__sub { color: var(--text-secondary); }
+.section--dark .section__cta--micro { background: linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(212,175,55,0.03) 100%); border-color: rgba(212,175,55,0.25); }
 
 /* ===== PROOF BENTO ===== */
 .proof-bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-bottom: var(--space-12); }

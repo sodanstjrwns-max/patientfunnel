@@ -808,6 +808,34 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .exit-skip { display: block; margin: var(--space-3) auto 0; border: none; background: transparent; font-family: var(--font); font-size: 0.75rem; color: var(--text-tertiary); cursor: pointer; padding: var(--space-2); transition: color var(--dur) var(--ease); }
 .exit-skip:hover { color: var(--text-secondary); }
 
+/* ===== EBOOK DOWNLOAD (게이트 없는 버전) ===== */
+.ebook-download { text-align: center; padding: var(--space-6) 0; }
+.ebook-download__btn { font-size: 1.125rem !important; padding: 1.25rem 2rem !important; position: relative; overflow: hidden; }
+.ebook-download__btn small { font-size: 0.75rem; opacity: 0.8; margin-left: var(--space-1); }
+.ebook-download__btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
+.ebook-download__btn:hover::after { transform: translateX(100%); }
+.ebook-download__note { margin-top: var(--space-3); font-size: 0.8125rem; color: var(--text-tertiary); display: flex; align-items: center; justify-content: center; gap: var(--space-2); }
+.ebook-download__note i { color: var(--success); font-size: 0.75rem; }
+.ebook-download__stats { margin-top: var(--space-4); display: flex; align-items: center; justify-content: center; gap: var(--space-6); font-size: 0.8125rem; color: var(--text-secondary); }
+.ebook-download__stats i { color: var(--gold); margin-right: var(--space-1); }
+
+/* ===== DOWNLOAD SUCCESS + WEBINAR INVITE ===== */
+.download-success-panel { text-align: center; max-width: 520px; }
+.download-success__icon { width: 72px; height: 72px; background: var(--gold-glow); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-5); }
+.download-success__icon i { font-size: 1.75rem; color: var(--gold); }
+.download-success__icon .fa-check-circle { color: var(--success); }
+.download-success__sub { font-size: 1rem; color: var(--text-secondary); margin-bottom: var(--space-6); }
+.webinar-invite { background: linear-gradient(135deg, rgba(255,198,41,0.08), rgba(255,198,41,0.02)); border: 1px solid rgba(255,198,41,0.2); border-radius: var(--radius-xl); padding: var(--space-6) var(--space-5); margin-top: var(--space-4); }
+.webinar-invite__badge { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); background: rgba(255,198,41,0.12); padding: 0.375rem 0.875rem; border-radius: var(--radius-full); margin-bottom: var(--space-3); }
+.webinar-invite__badge i { animation: livePulse 1.5s ease-in-out infinite; }
+@keyframes livePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.webinar-invite h4 { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-2); }
+.webinar-invite > p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: var(--space-4); line-height: 1.6; }
+.webinar-invite__list { list-style: none; padding: 0; margin: 0 0 var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); }
+.webinar-invite__list li { display: flex; align-items: center; gap: var(--space-2); font-size: 0.8125rem; color: var(--text-secondary); }
+.webinar-invite__list li i { color: var(--gold); font-size: 0.6875rem; flex-shrink: 0; }
+.webinar-invite__note { display: block; margin-top: var(--space-3); font-size: 0.6875rem; color: var(--text-tertiary); }
+
 /* ===== ANIMATIONS ===== */
 [data-reveal] { opacity: 0; transform: translateY(32px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
 [data-reveal].revealed { opacity: 1; transform: translateY(0); }

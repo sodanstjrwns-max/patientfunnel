@@ -869,14 +869,16 @@
                                 <li><i class="fas fa-check"></i> 병원 OS 구축 로드맵</li>
                             </ul>
                         </div>
-                        <form class="ebook-form" id="pdfForm" novalidate>
-                            <p class="ebook-form__title"><strong>이메일을 입력하시면 즉시 발송됩니다</strong></p>
-                            <input type="text" placeholder="병원명" required aria-label="병원명">
-                            <input type="text" placeholder="이름" required aria-label="이름">
-                            <input type="email" placeholder="이메일 주소" required aria-label="이메일 주소">
-                            <button type="submit" class="btn btn--glow btn--block"><i class="fas fa-download"></i> 전자책 무료 받기</button>
-                            <small>* 이메일은 전자책 발송 및 웨비나 안내 목적으로만 사용됩니다.</small>
-                        </form>
+                        <div class="ebook-download" id="ebookDownload">
+                            <button class="btn btn--glow btn--block btn--xl ebook-download__btn" onclick="downloadGuide()" type="button">
+                                <i class="fas fa-download"></i> 무료 가이드 바로 받기 <small>(17p PDF)</small>
+                            </button>
+                            <p class="ebook-download__note"><i class="fas fa-lock"></i> 이메일 입력 없이 즉시 다운로드됩니다</p>
+                            <div class="ebook-download__stats">
+                                <span><i class="fas fa-download"></i> <strong data-count="12847">0</strong>회 다운로드</span>
+                                <span><i class="fas fa-star"></i> 4.9/5.0 만족도</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -942,16 +944,32 @@
 
     <div class="modal" id="pdfModal" role="dialog" aria-modal="true" aria-labelledby="pdfModalTitle">
         <div class="modal__overlay" onclick="closePDFModal()"></div>
-        <div class="modal__panel">
+        <div class="modal__panel download-success-panel">
             <button class="modal__close" onclick="closePDFModal()" aria-label="닫기"><i class="fas fa-times"></i></button>
-            <div class="modal__title" id="pdfModalTitle">페이션트 퍼널 전자책 요약본</div>
-            <p>이메일로 즉시 발송됩니다</p>
-            <form class="modal-form" id="pdfModalForm" novalidate>
-                <label>병원명<input type="text" placeholder="병원명을 입력해주세요" required></label>
-                <label>이름<input type="text" placeholder="이름을 입력해주세요" required></label>
-                <label>이메일<input type="email" placeholder="email@example.com" required></label>
-                <button type="submit" class="btn btn--glow btn--block"><i class="fas fa-download"></i> 전자책 받기</button>
-            </form>
+            <div id="downloadStartView">
+                <div class="download-success__icon"><i class="fas fa-spinner fa-spin"></i></div>
+                <div class="modal__title" id="pdfModalTitle">가이드 다운로드 준비 중...</div>
+                <p>잠시만 기다려주세요</p>
+            </div>
+            <div id="downloadCompleteView" style="display:none">
+                <div class="download-success__icon"><i class="fas fa-check-circle"></i></div>
+                <div class="modal__title">가이드 다운로드가 시작되었습니다! ✅</div>
+                <p class="download-success__sub">더 깊이 배우고 싶으시다면 👇</p>
+                <div class="webinar-invite">
+                    <div class="webinar-invite__badge"><i class="fas fa-video"></i> LIVE</div>
+                    <h4>무료 경영 웨비나</h4>
+                    <p>PDF에서 읽은 10단계 프레임워크를<br><strong>문석준 원장이 직접 2시간 동안 설명</strong>합니다</p>
+                    <ul class="webinar-invite__list">
+                        <li><i class="fas fa-check"></i> 가이드에 없는 심화 전략 공개</li>
+                        <li><i class="fas fa-check"></i> 실시간 Q&A — 내 병원 맞춤 답변</li>
+                        <li><i class="fas fa-check"></i> 2달에 1번, 소수 정예 진행</li>
+                    </ul>
+                    <a href="https://dentalfunnel.liveklass.com/" target="_blank" rel="noopener" class="btn btn--glow btn--block btn--xl">
+                        <i class="fas fa-play-circle"></i> 무료 웨비나 신청하기
+                    </a>
+                    <small class="webinar-invite__note">* 선착순 마감 · 참석만으로 가치 있는 시간을 보장합니다</small>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal exit-modal" id="exitIntentModal" role="dialog" aria-modal="true">

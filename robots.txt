@@ -1,40 +1,79 @@
 # ============================================================
 # Patient Funnel - robots.txt
-# Last updated: 2026-02-12
+# https://patientfunnel.kr
+# Last updated: 2026-02-13
 # ============================================================
-
-# Default: Allow all
-User-agent: *
-Allow: /
 
 # Sitemap
 Sitemap: https://patientfunnel.kr/sitemap.xml
 
-# ===== Search Engines =====
+# ============================================================
+# Default: Allow all crawlers
+# ============================================================
+User-agent: *
+Allow: /
+Disallow: /_*
+Disallow: /cdn-cgi/
+
+# ============================================================
+# Search Engines — Full Access
+# ============================================================
+
+# Google
 User-agent: Googlebot
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+# Bing
 User-agent: Bingbot
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+# Naver
+User-agent: Yeti
 Allow: /
 
 User-agent: NaverBot
 Allow: /
 
-User-agent: Yeti
-Allow: /
-
+# Daum / Kakao
 User-agent: Daumoa
 Allow: /
 
+# Apple
 User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-# ===== AI Search & Assistants =====
+# Yandex
+User-agent: YandexBot
+Allow: /
 
-# OpenAI
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+
+# ============================================================
+# AI Search Engines & Assistants — Full Access (AEO Strategy)
+# ============================================================
+
+# OpenAI / ChatGPT
 User-agent: GPTBot
 Allow: /
 
@@ -44,7 +83,7 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-# Anthropic
+# Anthropic / Claude
 User-agent: anthropic-ai
 Allow: /
 
@@ -54,7 +93,7 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
-# Google AI
+# Google AI / Gemini
 User-agent: Google-Extended
 Allow: /
 
@@ -67,10 +106,7 @@ Allow: /
 User-agent: GoogleOther-Video
 Allow: /
 
-# Microsoft
-User-agent: BingPreview
-Allow: /
-
+# Microsoft / Copilot
 User-agent: Copilot
 Allow: /
 
@@ -90,11 +126,14 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-# Meta
+# Meta / Facebook
 User-agent: FacebookBot
 Allow: /
 
 User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: meta-externalfetcher
 Allow: /
 
 # Amazon
@@ -105,7 +144,7 @@ Allow: /
 User-agent: BraveBot
 Allow: /
 
-# AI2 (Allen Institute)
+# Allen Institute (AI2)
 User-agent: AI2Bot
 Allow: /
 
@@ -132,5 +171,49 @@ Allow: /
 User-agent: GensparkBot
 Allow: /
 
-# ===== Crawl Settings =====
-Crawl-delay: 1
+# Phind
+User-agent: PhindBot
+Allow: /
+
+# Writesonic / Chatsonic
+User-agent: WritesonicBot
+Allow: /
+
+# ============================================================
+# SEO Tools — Allow with rate limiting
+# ============================================================
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 10
+
+# ============================================================
+# Blocked: Known bad bots / scrapers
+# ============================================================
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: MegaIndex
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /

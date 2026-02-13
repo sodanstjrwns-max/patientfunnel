@@ -1,4 +1,3 @@
-/* Updated: 2026-02-13T15:19:03.495Z */
 /* ============================================================
    Patient Funnel — NOVA Design System 7.0 (2026)
    2026 SaaS Trend · Dark/Light Hybrid · Bento Grid · Cinematic
@@ -48,6 +47,7 @@
     --blue: #3B82F6;
     --green: #22C55E;
     --red: #EF4444;
+    --success: #22C55E;
     
     /* Typography */
     --font: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -335,7 +335,7 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .cases-subsection,
 .webinar-subsection { padding: var(--space-24) 0; position: relative; }
 .cases-subsection--dark,
-.webinar-subsection--dark { background: var(--bg-dark); color: var(--text-primary); }
+.webinar-subsection--dark { background: var(--bg-dark); color: var(--text-primary); padding-top: var(--space-24); }
 .cases-subsection--dark p,
 .webinar-subsection--dark p { color: var(--text-secondary); }
 .cases-subsection--dark strong,
@@ -367,7 +367,7 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .section--cta h2, .section--cta h3 { color: var(--text-primary); margin-bottom: var(--space-4); }
 .section--cta p { color: var(--text-secondary); margin-bottom: var(--space-8); }
 
-.section__header { text-align: center; }
+.section__header { text-align: center; margin-bottom: var(--space-16); }
 .section__tag {
     display: inline-block; font-size: 0.6875rem; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold);
@@ -678,7 +678,7 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .webinar-cta {
     text-align: center; background: linear-gradient(135deg, var(--gold-glow), rgba(212,168,67,0.04));
     border: 1px solid rgba(212,168,67,0.12); border-radius: var(--radius-2xl);
-    padding: var(--space-16); margin-bottom: var(--space-10);
+    padding: var(--space-16); margin-bottom: var(--space-16);
     position: relative; overflow: hidden;
 }
 .webinar-cta::before {
@@ -692,7 +692,7 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .webinar-cta .btn { position: relative; }
 .webinar-cta small { display: block; margin-top: var(--space-3); color: var(--text-dark-tertiary); font-size: 0.6875rem; position: relative; }
 
-.coaching-hint { background: var(--bg-white); border: 1px solid var(--border-light); border-radius: var(--radius-2xl); padding: var(--space-8); }
+.coaching-hint { background: var(--bg-white); border: 1px solid var(--border-light); border-radius: var(--radius-2xl); padding: var(--space-8); margin-bottom: var(--space-24); }
 .coaching-hint__head { display: flex; gap: var(--space-4); margin-bottom: var(--space-6); }
 .coaching-hint__head > i { font-size: 1.25rem; color: var(--gold); margin-top: 2px; }
 .coaching-hint__head h4 { font-size: 1rem; margin-bottom: var(--space-1); }
@@ -723,13 +723,6 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .ebook-card__mockup span { font-size: 0.9375rem; font-weight: 600; line-height: 1.4; position: relative; }
 .ebook-card__list li { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; font-size: 0.875rem; color: var(--text-secondary); }
 .ebook-card__list i { color: var(--gold); font-size: 0.8125rem; }
-.ebook-form { display: flex; flex-direction: column; gap: var(--space-3); }
-.ebook-form__title { font-size: 1rem; color: var(--text-primary); margin-bottom: var(--space-2); }
-.ebook-form input { padding: 0.8125rem 1rem; font-size: 0.9375rem; font-family: var(--font); border: 1.5px solid var(--border-dark); border-radius: var(--radius-md); background: var(--bg-dark-3); color: var(--text-primary); outline: none; transition: all var(--dur) var(--ease); }
-.ebook-form input::placeholder { color: var(--text-tertiary); }
-.ebook-form input:focus { border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-glow); }
-.ebook-form small { font-size: 0.6875rem; color: var(--text-tertiary); }
-
 /* ===== FAQ ===== */
 .faq-list { display: flex; flex-direction: column; gap: var(--space-3); }
 .faq-item { background: var(--bg-white); border: 1px solid var(--border-light); border-radius: var(--radius-lg); overflow: hidden; transition: all var(--dur) var(--ease); }
@@ -792,12 +785,6 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .modal__close:hover { background: rgba(255,255,255,0.12); color: var(--text-primary); transform: rotate(90deg); }
 .modal__title { font-size: 1.25rem; font-weight: 700; margin-bottom: var(--space-2); line-height: 1.15; }
 .modal__panel > p { color: var(--text-secondary); margin-bottom: var(--space-5); font-size: 0.875rem; }
-.modal-form { display: flex; flex-direction: column; gap: var(--space-3); }
-.modal-form label { display: flex; flex-direction: column; gap: var(--space-1); font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); }
-.modal-form input { padding: 0.75rem 1rem; font-size: 0.9375rem; font-family: var(--font); border: 1.5px solid var(--border-dark); border-radius: var(--radius-sm); background: var(--bg-dark-3); color: var(--text-primary); outline: none; transition: all var(--dur) var(--ease); }
-.modal-form input::placeholder { color: var(--text-tertiary); }
-.modal-form input:focus { border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-glow); }
-
 .exit-panel { text-align: center; }
 .exit-icon { width: 60px; height: 60px; background: var(--gold-glow); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-5); animation: exitBounce 2s ease-in-out infinite; }
 @keyframes exitBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
@@ -809,17 +796,9 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .exit-skip { display: block; margin: var(--space-3) auto 0; border: none; background: transparent; font-family: var(--font); font-size: 0.75rem; color: var(--text-tertiary); cursor: pointer; padding: var(--space-2); transition: color var(--dur) var(--ease); }
 .exit-skip:hover { color: var(--text-secondary); }
 
-/* ===== YOUTUBE + SECTION SPACING ===== */
-.cases-subsection .section__title { font-size: clamp(1.75rem, 4vw, 2.5rem); }
-.cases-subsection .section__tag { font-size: 0.75rem; }
-#webinar > .container:first-child { padding-bottom: 4rem; }
-.webinar-subsection--dark { border-top: none; }
-#webinar .webinar-cta { margin-bottom: 2rem; }
-#webinar .coaching-hint { margin-bottom: 4rem; }
-
 /* ===== EBOOK DOWNLOAD (게이트 없는 버전) ===== */
 .ebook-download { text-align: center; padding: var(--space-6) 0; }
-.ebook-download__btn { font-size: 1.125rem !important; padding: 1.25rem 2rem !important; position: relative; overflow: hidden; }
+.ebook-download__btn { font-size: 1.125rem; padding: 1.25rem 2rem; position: relative; overflow: hidden; }
 .ebook-download__btn small { font-size: 0.75rem; opacity: 0.8; margin-left: var(--space-1); }
 .ebook-download__btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
 .ebook-download__btn:hover::after { transform: translateX(100%); }
@@ -834,6 +813,7 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .download-success__icon i { font-size: 1.75rem; color: var(--gold); }
 .download-success__icon .fa-check-circle { color: var(--success); }
 .download-success__sub { font-size: 1rem; color: var(--text-secondary); margin-bottom: var(--space-6); }
+
 .webinar-invite { background: linear-gradient(135deg, rgba(255,198,41,0.08), rgba(255,198,41,0.02)); border: 1px solid rgba(255,198,41,0.2); border-radius: var(--radius-xl); padding: var(--space-6) var(--space-5); margin-top: var(--space-4); }
 .webinar-invite__badge { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); background: rgba(255,198,41,0.12); padding: 0.375rem 0.875rem; border-radius: var(--radius-full); margin-bottom: var(--space-3); }
 .webinar-invite__badge i { animation: livePulse 1.5s ease-in-out infinite; }

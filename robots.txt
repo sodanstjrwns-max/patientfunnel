@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /api/project/download_converted_files?
+Allow: /api/files/s/
+Disallow: /login
+Disallow: /search
+Disallow: /api
+Disallow: /user
+Disallow: /mysparkpages
+Disallow: /travel
+Disallow: /products
+Disallow: /images
+Disallow: /doc_agent
+Disallow: /agents?*id=*
+Disallow: /autopilotagent_viewer
+Disallow: /spark?*generatorapi*
+Disallow: /autopilotagent
+
+Sitemap: https://www.genspark.ai/sitemap.xml

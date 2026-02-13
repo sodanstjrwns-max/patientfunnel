@@ -808,6 +808,16 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .exit-skip { display: block; margin: var(--space-3) auto 0; border: none; background: transparent; font-family: var(--font); font-size: 0.75rem; color: var(--text-tertiary); cursor: pointer; padding: var(--space-2); transition: color var(--dur) var(--ease); }
 .exit-skip:hover { color: var(--text-secondary); }
 
+/* ===== YOUTUBE HERO CARD ===== */
+.youtube-placeholder { display: flex; justify-content: center; padding: var(--space-8) 0; }
+.youtube-hero-card { display: flex; flex-direction: column; align-items: center; text-align: center; padding: var(--space-12) var(--space-10); background: linear-gradient(135deg, rgba(255,0,0,0.06), rgba(255,0,0,0.02)); border: 1px solid rgba(255,0,0,0.15); border-radius: var(--radius-2xl); text-decoration: none; color: inherit; transition: all var(--dur) var(--ease); max-width: 600px; width: 100%; }
+.youtube-hero-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(255,0,0,0.1); border-color: rgba(255,0,0,0.3); }
+.youtube-hero-card__icon { width: 72px; height: 72px; background: rgba(255,0,0,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-5); }
+.youtube-hero-card__icon i { font-size: 2rem; color: #ff0000; }
+.youtube-hero-card h4 { font-size: 1.25rem; font-weight: 700; margin-bottom: var(--space-3); }
+.youtube-hero-card p { font-size: 0.875rem; color: var(--text-dark-secondary); line-height: 1.7; margin-bottom: var(--space-6); }
+.youtube-hero-card .btn { pointer-events: none; }
+
 /* ===== SECTION SPACING FIX ===== */
 #resources { padding-top: 100px; }
 .section-spacer { height: 80px; }

@@ -12,6 +12,89 @@
     let currentSearch = '';
     let exitShown = false;
 
+    // ── Analytics Helper (GA4 + Amplitude 동시 전송) ──
+    const track = (eventName, params = {}) => {
+        try {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, params);
+            }
+            if (typeof amplitude !== 'undefined' && amplitude.track) {
+                amplitude.track(eventName, params);
+            }
+        } catch(e) {}
+    };
+
+    // ── 스크롤 깊이 추적 ──
+    const initScrollTracking = () => {
+        const thresholds = [25, 50, 75, 100];
+        const fired = new Set();
+        const check = throttle(() => {
+            const h = document.documentElement.scrollHeight - window.innerHeight;
+            if (h <= 0) return;
+            const pct = Math.round((window.scrollY / h) * 100);
+            thresholds.forEach(t => {
+                if (pct >= t && !fired.has(t)) {
+                    fired.add(t);
+                    track('scroll_depth', { depth: t, depth_label: `${t}%` });
+                }
+            });
+        }, 500);
+        window.addEventListener('scroll', check, { passive: true });
+    };
+
+    // ── 섹션 체류 시간 추적 ──
+    const initSectionTracking = () => {
+        const sections = $$('section[id]');
+        const sectionTimers = {};
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.id;
+                if (entry.isIntersecting) {
+                    sectionTimers[id] = Date.now();
+                    track('section_view', { section: id });
+                } else if (sectionTimers[id]) {
+                    const duration = Math.round((Date.now() - sectionTimers[id]) / 1000);
+                    if (duration >= 3) {
+                        track('section_engagement', { section: id, duration_seconds: duration });
+                    }
+                    delete sectionTimers[id];
+                }
+            });
+        }, { threshold: 0.3 });
+        sections.forEach(s => observer.observe(s));
+    };
+
+    // ── CTA 클릭 추적 ──
+    const initCTATracking = () => {
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href*="dentalfunnel.liveklass"]');
+            if (link) {
+                const section = link.closest('section[id]')?.id || link.closest('[id]')?.id || 'unknown';
+                const label = link.textContent.trim().substring(0, 50);
+                track('cta_click', {
+                    cta_location: section,
+                    cta_text: label,
+                    cta_url: link.href
+                });
+            }
+
+            const emailLink = e.target.closest('a[href^="mailto:"]');
+            if (emailLink) {
+                track('email_click', { email: emailLink.href.replace('mailto:', '') });
+            }
+
+            const blogLink = e.target.closest('a[href*="blog.patientfunnel"]');
+            if (blogLink) {
+                track('blog_click', { url: blogLink.href, title: blogLink.textContent.trim().substring(0, 80) });
+            }
+
+            const youtubeLink = e.target.closest('a[href*="youtube.com"]');
+            if (youtubeLink) {
+                track('youtube_click', { url: youtubeLink.href });
+            }
+        });
+    };
+
     const initCursorGlow = () => {
         const hero = $('#hero');
         if (!hero) return;
@@ -325,6 +408,7 @@
     window.openPDFModal = () => {
         const modal = $('#pdfModal');
         if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        track('webinar_modal_shown', { event_category: 'engagement', trigger: 'post_download' });
     };
     window.closePDFModal = () => {
         const modal = $('#pdfModal');
@@ -335,7 +419,7 @@
         if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
     };
     
-    window.downloadGuide = () => {
+    window.downloadGuide = (source = 'unknown') => {
         window.open(PDF_GUIDE_URL, '_blank');
         openPDFModal();
 
@@ -345,13 +429,11 @@
             localStorage.setItem('pf_dl_count', count.toString());
         } catch(e) {}
 
-        if (typeof gtag === 'function') {
-            gtag('event', 'guide_download', {
-                event_category: 'engagement',
-                event_label: 'PDF Guide Download',
-                value: 1
-            });
-        }
+        track('guide_download', {
+            event_category: 'conversion',
+            source: source,
+            value: 1
+        });
     };
 
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closePDFModal(); closeExitIntent(); } });
@@ -362,6 +444,7 @@
             exitShown = true;
             const modal = $('#exitIntentModal');
             if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+            track('exit_intent_shown', { event_category: 'engagement' });
         });
     };
 
@@ -695,6 +778,9 @@
         initStageCounter();
         initBASliders();
         initFirstStageAutoOpen();
+        initScrollTracking();
+        initSectionTracking();
+        initCTATracking();
 
         Promise.allSettled([fetchBlogPosts(), fetchYouTube()]);
 

@@ -415,15 +415,15 @@
     };
 
     const showPlaceholder = () => {
-        blogPosts = [
-            { title: '왜 광고비를 늘려도 병원은 성장하지 않는가?', summary: '대부분의 병원이 광고비 증액으로 신환을 늘리려 하지만, 정작 매출이 비례해서 오르지 않습니다. 문제는 \'퍼널의 누수\'에 있습니다.', category: '병원 마케팅', readTime: 12, featured: true, link: 'https://blog.patientfunnel.kr', date: '' },
-            { title: '페이션트 코드: "생각해 볼게요"를 "맡길게요"로 바꾸는 기술', summary: '환자의 \'딴소리\' 속에 돈이 숨어있습니다. 신뢰 없이는 어떤 기술도 통하지 않습니다.', category: '상담·전환', readTime: 15, featured: false, link: 'https://blog.patientfunnel.kr', date: '' },
-            { title: '환자 관리가 아니라 환자 \'관계\' 관리입니다', summary: 'PRM의 진짜 의미. 환자를 데이터가 아닌 사람으로 대하는 철학.', category: 'PRM', readTime: 12, featured: false, link: 'https://blog.patientfunnel.kr', date: '' },
-            { title: 'One Team: 직원들이 \'같은 언어\'로 말하게 만드는 법', summary: 'Mission, Vision, Core Value가 명확해야 팀이 하나로 움직입니다.', category: '직원·조직', readTime: 14, featured: false, link: 'https://blog.patientfunnel.kr', date: '' },
-            { title: '당신은 경영자의 정체성을 가지고 있는가?', summary: '\'어떻게든 되겠지\'는 통하지 않습니다. 면허 없이 운전대를 잡은 당신에게.', category: '개원 준비', readTime: 13, featured: false, link: 'https://blog.patientfunnel.kr', date: '' },
-            { title: '선행 지표 vs 후행 지표: 병원장이 기록해야 할 숫자들', summary: '데이터 기반 병원 경영의 시작. 미래 성과를 예측하게 해주는 숫자들.', category: '환자경험', readTime: 10, featured: false, link: 'https://blog.patientfunnel.kr', date: '' }
-        ];
-        renderPosts(blogPosts);
+        const grid = $('#knowledgeArticles');
+        if (!grid) return;
+        grid.innerHTML = `
+            <div style="grid-column:1/-1; text-align:center; padding: 3rem 1rem;">
+                <i class="fas fa-blog" style="font-size:2.5rem; color:var(--gold); margin-bottom:1rem; display:block;"></i>
+                <h4 style="margin-bottom:0.5rem;">인블로그에서 최신 콘텐츠를 확인하세요</h4>
+                <p style="color:var(--text-dark-secondary); margin-bottom:1.5rem;">병원 경영, 환자 경험 설계, 상담 전환율 향상 등<br>실전 노하우를 공유합니다.</p>
+                <a href="https://blog.patientfunnel.kr" target="_blank" rel="noopener" class="btn btn--glow"><i class="fas fa-external-link-alt"></i> 인블로그 바로가기</a>
+            </div>`;
     };
 
     const renderPosts = (posts) => {

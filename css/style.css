@@ -334,7 +334,7 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .cases-subsection,
 .webinar-subsection { padding: var(--space-24) 0; position: relative; }
 .cases-subsection--dark,
-.webinar-subsection--dark { background: var(--bg-dark); color: var(--text-primary); margin-top: 120px; }
+.webinar-subsection--dark { background: var(--bg-dark); color: var(--text-primary); }
 .cases-subsection--dark p,
 .webinar-subsection--dark p { color: var(--text-secondary); }
 .cases-subsection--dark strong,
@@ -691,7 +691,7 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .webinar-cta .btn { position: relative; }
 .webinar-cta small { display: block; margin-top: var(--space-3); color: var(--text-dark-tertiary); font-size: 0.6875rem; position: relative; }
 
-.coaching-hint { background: var(--bg-white); border: 1px solid var(--border-light); border-radius: var(--radius-2xl); padding: var(--space-8); margin-bottom: 120px; }
+.coaching-hint { background: var(--bg-white); border: 1px solid var(--border-light); border-radius: var(--radius-2xl); padding: var(--space-8); }
 .coaching-hint__head { display: flex; gap: var(--space-4); margin-bottom: var(--space-6); }
 .coaching-hint__head > i { font-size: 1.25rem; color: var(--gold); margin-top: 2px; }
 .coaching-hint__head h4 { font-size: 1rem; margin-bottom: var(--space-1); }
@@ -807,6 +807,12 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 .exit-benefits i { color: var(--gold); font-size: 0.6875rem; }
 .exit-skip { display: block; margin: var(--space-3) auto 0; border: none; background: transparent; font-family: var(--font); font-size: 0.75rem; color: var(--text-tertiary); cursor: pointer; padding: var(--space-2); transition: color var(--dur) var(--ease); }
 .exit-skip:hover { color: var(--text-secondary); }
+
+/* ===== SECTION SPACING FIX ===== */
+#resources { padding-top: 100px; }
+.section-spacer { height: 80px; }
+.coaching-hint + .webinar-subsection--dark,
+.container + .webinar-subsection--dark { margin-top: 0; }
 
 /* ===== EBOOK DOWNLOAD (게이트 없는 버전) ===== */
 .ebook-download { text-align: center; padding: var(--space-6) 0; }

@@ -403,13 +403,32 @@
             const items = doc.querySelectorAll('item');
             if (!items.length) throw new Error('No items');
 
+            const mapCategory = (raw) => {
+                if (!raw) return '블로그';
+                const lower = raw.toLowerCase();
+                const map = {
+                    '환자경험': '환자경험', '환자 경험': '환자경험', 'patient experience': '환자경험',
+                    '상담': '상담·전환', '전환': '상담·전환', '상담·전환': '상담·전환', '상담전환': '상담·전환', 'consultation': '상담·전환',
+                    'prm': 'PRM', '환자관계': 'PRM', '환자 관계': 'PRM', '관계관리': 'PRM',
+                    '직원': '직원·조직', '조직': '직원·조직', '직원·조직': '직원·조직', '팀': '직원·조직', 'team': '직원·조직', 'staff': '직원·조직',
+                    '개원': '개원 준비', '개원 준비': '개원 준비', 'opening': '개원 준비',
+                    '마케팅': '병원 마케팅', '병원 마케팅': '병원 마케팅', '광고': '병원 마케팅', 'marketing': '병원 마케팅',
+                    '경영': '병원 마케팅', '병원경영': '병원 마케팅', '성장': '병원 마케팅'
+                };
+                for (const [key, val] of Object.entries(map)) {
+                    if (lower.includes(key.toLowerCase())) return val;
+                }
+                return raw;
+            };
+
             blogPosts = Array.from(items).map((item, i) => {
                 const desc = (item.querySelector('description')?.textContent || '').replace(/<[^>]*>/g, '').substring(0, 150) + '...';
+                const rawCategory = item.querySelector('category')?.textContent || '';
                 return {
                     title: item.querySelector('title')?.textContent || '',
                     link: item.querySelector('link')?.textContent || '',
                     summary: desc,
-                    category: item.querySelector('category')?.textContent || '블로그',
+                    category: mapCategory(rawCategory),
                     date: item.querySelector('pubDate')?.textContent || '',
                     readTime: Math.max(5, Math.ceil((item.querySelector('description')?.textContent || '').length / 500)),
                     featured: i === 0
@@ -681,6 +700,10 @@
 
         if (typeof Chart !== 'undefined') { initChart(); }
         else { window.addEventListener('load', () => setTimeout(initChart, 100)); }
+
+        // ai-last-updated 자동 갱신
+        const aiMeta = document.querySelector('meta[name="ai-last-updated"]');
+        if (aiMeta) { aiMeta.setAttribute('content', new Date().toISOString().split('T')[0]); }
     };
 
     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }

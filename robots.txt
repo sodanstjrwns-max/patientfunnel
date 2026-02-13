@@ -1,18 +1,136 @@
-User-agent: *
-Allow: /api/project/download_converted_files?
-Allow: /api/files/s/
-Disallow: /login
-Disallow: /search
-Disallow: /api
-Disallow: /user
-Disallow: /mysparkpages
-Disallow: /travel
-Disallow: /products
-Disallow: /images
-Disallow: /doc_agent
-Disallow: /agents?*id=*
-Disallow: /autopilotagent_viewer
-Disallow: /spark?*generatorapi*
-Disallow: /autopilotagent
+# ============================================================
+# Patient Funnel - robots.txt
+# Last updated: 2026-02-12
+# ============================================================
 
-Sitemap: https://www.genspark.ai/sitemap.xml
+# Default: Allow all
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://patientfunnel.kr/sitemap.xml
+
+# ===== Search Engines =====
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: NaverBot
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+User-agent: Daumoa
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ===== AI Search & Assistants =====
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: GoogleOther-Image
+Allow: /
+
+User-agent: GoogleOther-Video
+Allow: /
+
+# Microsoft
+User-agent: BingPreview
+Allow: /
+
+User-agent: Copilot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Common Crawl
+User-agent: CCBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Meta
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# Brave
+User-agent: BraveBot
+Allow: /
+
+# AI2 (Allen Institute)
+User-agent: AI2Bot
+Allow: /
+
+# Hugging Face
+User-agent: HuggingFaceBot
+Allow: /
+
+# xAI / Grok
+User-agent: Grok
+Allow: /
+
+User-agent: xAI
+Allow: /
+
+# Mistral
+User-agent: MistralBot
+Allow: /
+
+# DeepSeek
+User-agent: DeepSeekBot
+Allow: /
+
+# Genspark
+User-agent: GensparkBot
+Allow: /
+
+# ===== Crawl Settings =====
+Crawl-delay: 1

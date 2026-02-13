@@ -1,17 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+    <!-- 메인 페이지 -->
     <url>
         <loc>https://patientfunnel.kr/</loc>
-        <lastmod>2026-02-12</lastmod>
+        <lastmod>2026-02-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="ko-KR" href="https://patientfunnel.kr/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://patientfunnel.kr/"/>
         <image:image>
             <image:loc>https://patientfunnel.kr/images/og-image.jpg</image:loc>
-            <image:title>Patient Funnel - 병원 성장의 OS</image:title>
-            <image:caption>환자 경험 중심 10단계 병원 경영 시스템</image:caption>
+            <image:title>Patient Funnel - 환자 경험 중심 10단계 병원 경영 시스템</image:title>
+            <image:caption>6,000+ 대표원장이 검증한 병원 성장 OS. 평균 매출 2.1배 성장, 상담 전환율 62%, 광고비 40% 절감.</image:caption>
         </image:image>
+    </url>
+
+    <!-- 섹션별 앵커 페이지 -->
+    <url>
+        <loc>https://patientfunnel.kr/#proof</loc>
+        <lastmod>2026-02-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://patientfunnel.kr/#framework</loc>
+        <lastmod>2026-02-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://patientfunnel.kr/#knowledge</loc>
+        <lastmod>2026-02-13</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://patientfunnel.kr/#about</loc>
+        <lastmod>2026-02-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://patientfunnel.kr/#cases</loc>
+        <lastmod>2026-02-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://patientfunnel.kr/#webinar</loc>
+        <lastmod>2026-02-13</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://patientfunnel.kr/#faq</loc>
+        <lastmod>2026-02-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://patientfunnel.kr/#contact</loc>
+        <lastmod>2026-02-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
     </url>
 
 </urlset>

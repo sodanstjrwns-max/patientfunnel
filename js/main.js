@@ -319,18 +319,46 @@
         });
     };
 
+    // PDF 가이드 URL (교체 필요 시 여기만 수정)
+    const PDF_GUIDE_URL = 'https://patientfunnel.kr/patient-funnel-guide.pdf';
+
     window.openPDFModal = () => {
         const modal = $('#pdfModal');
-        if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; setTimeout(() => { $('input', modal)?.focus(); }, 200); }
+        if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
     };
     window.closePDFModal = () => {
         const modal = $('#pdfModal');
         if (modal?.classList.contains('active')) { modal.classList.remove('active'); document.body.style.overflow = ''; }
+        const startView = $('#downloadStartView');
+        const completeView = $('#downloadCompleteView');
+        if (startView) startView.style.display = '';
+        if (completeView) completeView.style.display = 'none';
     };
     window.closeExitIntent = () => {
         const modal = $('#exitIntentModal');
         if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
     };
+    // 🎯 핵심: 게이트 없이 바로 다운로드 + 웨비나 전환
+    window.downloadGuide = () => {
+        const link = document.createElement('a');
+        link.href = PDF_GUIDE_URL;
+        link.download = 'Patient_Funnel_병원경영가이드.pdf';
+        link.target = '_blank';
+        link.rel = 'noopener';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        openPDFModal();
+        setTimeout(() => {
+            const startView = $('#downloadStartView');
+            const completeView = $('#downloadCompleteView');
+            if (startView) startView.style.display = 'none';
+            if (completeView) completeView.style.display = '';
+        }, 1500);
+        try { let c = parseInt(localStorage.getItem('pf_dl_count') || '12847'); localStorage.setItem('pf_dl_count', (++c).toString()); } catch(e) {}
+        if (typeof gtag === 'function') { gtag('event', 'guide_download', { event_category: 'engagement', event_label: 'PDF Guide Download', value: 1 }); }
+    };
+
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closePDFModal(); closeExitIntent(); } });
 
     const initExitIntent = () => {
@@ -343,27 +371,8 @@
     };
 
     const initForms = () => {
-        ['#pdfForm', '#pdfModalForm'].forEach(sel => {
-            const form = $(sel);
-            if (!form) return;
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const btn = $('button[type="submit"]', form);
-                if (!btn) return;
-                const orig = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 전송 중...';
-                btn.disabled = true;
-                await new Promise(r => setTimeout(r, 1000));
-                btn.innerHTML = '<i class="fas fa-check"></i> 전송 완료!';
-                setTimeout(() => {
-                    alert('전자책 요약본이 이메일로 발송되었습니다!\n잠시 후 메일함을 확인해주세요.');
-                    closePDFModal();
-                    form.reset();
-                    btn.innerHTML = orig;
-                    btn.disabled = false;
-                }, 500);
-            });
-        });
+        const countEl = document.querySelector('.ebook-download__stats [data-count]');
+        if (countEl) { try { const s = localStorage.getItem('pf_dl_count'); if (s) countEl.setAttribute('data-count', s); } catch(e) {} }
     };
 
     const fetchBlogPosts = async () => {

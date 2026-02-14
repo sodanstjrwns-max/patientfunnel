@@ -748,7 +748,7 @@ mark { background: var(--gold-glow); color: var(--gold-deep); padding: 0.1em 0.4
 
 /* ===== FOOTER ===== */
 .footer { background: var(--bg-dark); color: var(--text-secondary); padding: var(--space-20) 0 var(--space-8); border-top: 1px solid var(--border-dark); }
-.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-10); margin-bottom: var(--space-10); }
+.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: var(--space-10); margin-bottom: var(--space-10); }
 .footer__brand-name { font-size: 1.125rem; color: var(--text-primary); margin-bottom: var(--space-3); display: block; }
 .footer__brand p { font-size: 0.8125rem; margin-bottom: var(--space-1); }
 .footer__tagline { font-size: 0.6875rem; color: var(--text-tertiary); font-style: italic; }

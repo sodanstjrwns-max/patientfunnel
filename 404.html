@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>페이지를 찾을 수 없습니다 (404) | Patient Funnel</title>
+    <meta name="description" content="요청하신 페이지가 존재하지 않습니다. Patient Funnel 메인 페이지 또는 병원 경영 블로그에서 원하시는 콘텐츠를 찾아보세요.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#07070A">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/blog.css">
+    <style>
+        .nf-hero { min-height: 72vh; display: flex; align-items: center; text-align: center; }
+        .nf-code {
+            font-size: clamp(5rem, 16vw, 9rem); font-weight: 800; line-height: 1;
+            background: linear-gradient(135deg, #E0B756, #FB7185);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            letter-spacing: -0.04em;
+        }
+        .nf-title { font-size: clamp(1.25rem, 3.5vw, 1.75rem); font-weight: 800; margin: 1rem 0 0.75rem; color: var(--t-1, #f2f2f5); }
+        .nf-desc { color: var(--t-2, #b9b9c4); max-width: 560px; margin: 0 auto 2rem; line-height: 1.8; }
+        .nf-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        .nf-links { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+        .nf-links a {
+            display: inline-flex; align-items: center; gap: 0.45em;
+            padding: 0.5rem 1rem; border-radius: 999px; font-size: 0.875rem; text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.12); color: var(--t-2, #b9b9c4); transition: all 0.2s ease;
+        }
+        .nf-links a:hover { border-color: rgba(224,183,86,0.6); color: #E0B756; transform: translateY(-1px); }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">본문으로 이동</a>
+    <header class="header" id="siteHeader">
+        <div class="header__inner">
+            <a href="/" class="header__logo" aria-label="Patient Funnel 홈으로"><span class="header__logo-dot"></span><span>Patient Funnel</span></a>
+            <a href="https://dentalfunnel.liveklass.com/" target="_blank" rel="noopener" class="header__cta">무료 웨비나 신청 <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="nf-hero">
+            <div class="container">
+                <p class="nf-code" aria-hidden="true">404</p>
+                <h1 class="nf-title">이 페이지는 퍼널에서 이탈했습니다</h1>
+                <p class="nf-desc">요청하신 페이지가 이동되었거나 존재하지 않습니다.<br>환자 여정처럼, 길을 잃은 방문자도 다시 안내해드리는 게 저희 방식입니다.</p>
+                <div class="nf-actions">
+                    <a href="/" class="btn btn--glow"><i class="fas fa-house"></i> 메인 페이지로</a>
+                    <a href="/blog/" class="btn"><i class="fas fa-newspaper"></i> 병원 경영 블로그</a>
+                </div>
+                <nav class="nf-links" aria-label="인기 콘텐츠">
+                    <a href="/blog/hospital-marketing-strategy-2026.html"><i class="fas fa-bullhorn"></i> 병원 마케팅 전략 가이드</a>
+                    <a href="/blog/consultation-conversion-rate.html"><i class="fas fa-comments-dollar"></i> 상담 동의율 높이는 법</a>
+                    <a href="/blog/glossary.html"><i class="fas fa-book-open"></i> 병원 경영 용어사전</a>
+                    <a href="/patient-funnel-guide.pdf"><i class="fas fa-file-pdf"></i> 무료 가이드 PDF</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom"><p>&copy; 2024-2026 Patient Funnel. All rights reserved.</p><p><a href="/" style="color:inherit;">patientfunnel.kr</a> · 서울비디치과 · 문석준</p></div>
+        </div>
+    </footer>
+</body>
+</html>

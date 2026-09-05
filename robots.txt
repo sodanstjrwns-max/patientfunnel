@@ -1,19 +1,34 @@
 # ============================================================
-# Patient Funnel - robots.txt
+# Patient Funnel - robots.txt v2.1
 # https://patientfunnel.kr
-# Last updated: 2026-02-13
+# Last updated: 2026-07-02
+# ============================================================
+# AI/LLM Hint: see /llms.txt and /llms-full.txt for citation-ready content
 # ============================================================
 
-# Sitemap
+# ===== Sitemaps =====
 Sitemap: https://patientfunnel.kr/sitemap.xml
+Sitemap: https://patientfunnel.kr/sitemap-index.xml
+Sitemap: https://patientfunnel.kr/sitemap-images.xml
+
+# ===== AI/LLM Index Files =====
+# Patient Funnel provides structured AI-ready content:
+#   /llms.txt              — Site summary for AI assistants (Anthropic standard)
+#   /llms-full.txt         — Full markdown content for citation
+#   /humans.txt            — Human-readable credits
+#   /feed.xml              — RSS 2.0 feed (blog, 25 articles)
+#   /blog/glossary.html    — Glossary of 16 core hospital-management terms (DefinedTermSet)
 
 # ============================================================
-# Default: Allow all crawlers
+# Default: Allow all
 # ============================================================
 User-agent: *
 Allow: /
 Disallow: /_*
 Disallow: /cdn-cgi/
+Disallow: /*?*utm_
+Disallow: /*?*fbclid
+Disallow: /*?*gclid
 
 # ============================================================
 # Search Engines — Full Access
@@ -29,25 +44,49 @@ Allow: /
 User-agent: Googlebot-Video
 Allow: /
 
+User-agent: Googlebot-News
+Allow: /
+
 User-agent: Google-InspectionTool
 Allow: /
 
-# Bing
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+
+# Bing / Microsoft
 User-agent: Bingbot
 Allow: /
 
 User-agent: BingPreview
 Allow: /
 
-# Naver
+User-agent: MSNBot
+Allow: /
+
+User-agent: MSNBot-Media
+Allow: /
+
+# Naver (Korea — Primary)
 User-agent: Yeti
 Allow: /
 
 User-agent: NaverBot
 Allow: /
 
-# Daum / Kakao
+User-agent: Yetibot
+Allow: /
+
+# Daum / Kakao (Korea)
 User-agent: Daumoa
+Allow: /
+
+User-agent: Daum
 Allow: /
 
 # Apple
@@ -61,6 +100,9 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
+User-agent: YandexImages
+Allow: /
+
 # DuckDuckGo
 User-agent: DuckDuckBot
 Allow: /
@@ -69,8 +111,29 @@ Allow: /
 User-agent: Baiduspider
 Allow: /
 
+User-agent: Baiduspider-image
+Allow: /
+
+# Qwant
+User-agent: Qwantify
+Allow: /
+
+# Mojeek
+User-agent: MojeekBot
+Allow: /
+
+# Kagi
+User-agent: KagiBot
+Allow: /
+
+# Neeva
+User-agent: NeevaBot
+Allow: /
+
 # ============================================================
-# AI Search Engines & Assistants — Full Access (AEO Strategy)
+# AI Search Engines & Assistants — Full Access (AEO/GEO Strategy)
+# Patient Funnel actively WELCOMES AI citation.
+# See /llms.txt for structured AI-friendly content.
 # ============================================================
 
 # OpenAI / ChatGPT
@@ -78,6 +141,9 @@ User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ChatGPT-User/2.0
 Allow: /
 
 User-agent: OAI-SearchBot
@@ -93,7 +159,13 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
-# Google AI / Gemini
+User-agent: claude-user
+Allow: /
+
+User-agent: claude-searchbot
+Allow: /
+
+# Google AI / Gemini / SGE
 User-agent: Google-Extended
 Allow: /
 
@@ -106,19 +178,31 @@ Allow: /
 User-agent: GoogleOther-Video
 Allow: /
 
-# Microsoft / Copilot
+User-agent: Bard
+Allow: /
+
+# Microsoft / Copilot / Bing Chat
 User-agent: Copilot
+Allow: /
+
+User-agent: CopilotBot
+Allow: /
+
+User-agent: BingChat
 Allow: /
 
 # Perplexity
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
 # You.com
 User-agent: YouBot
 Allow: /
 
-# Common Crawl
+# Common Crawl (used by many LLMs)
 User-agent: CCBot
 Allow: /
 
@@ -126,7 +210,10 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-# Meta / Facebook
+User-agent: cohere-training-data-crawler
+Allow: /
+
+# Meta / Facebook / LLaMA
 User-agent: FacebookBot
 Allow: /
 
@@ -148,6 +235,9 @@ Allow: /
 User-agent: AI2Bot
 Allow: /
 
+User-agent: AI2Bot-Dolma
+Allow: /
+
 # Hugging Face
 User-agent: HuggingFaceBot
 Allow: /
@@ -161,6 +251,9 @@ Allow: /
 
 # Mistral
 User-agent: MistralBot
+Allow: /
+
+User-agent: MistralAI-User
 Allow: /
 
 # DeepSeek
@@ -179,6 +272,61 @@ Allow: /
 User-agent: WritesonicBot
 Allow: /
 
+# Komo
+User-agent: KomoBot
+Allow: /
+
+# Andi
+User-agent: AndiBot
+Allow: /
+
+# Lemur (HyperWrite)
+User-agent: LemurBot
+Allow: /
+
+# Diffbot (used by AI training)
+User-agent: Diffbot
+Allow: /
+
+# ============================================================
+# Social Media Crawlers
+# ============================================================
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Slackbot-LinkExpanding
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: redditbot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: kakaotalk-scrap
+Allow: /
+
 # ============================================================
 # SEO Tools — Allow with rate limiting
 # ============================================================
@@ -194,9 +342,18 @@ User-agent: MJ12bot
 Allow: /
 Crawl-delay: 10
 
+User-agent: SiteAuditBot
+Allow: /
+Crawl-delay: 10
+
+User-agent: ImagesiftBot
+Allow: /
+Crawl-delay: 10
+
 # ============================================================
-# Blocked: Known bad bots / scrapers
+# Blocked: Known bad bots / aggressive scrapers
 # ============================================================
+
 User-agent: DotBot
 Disallow: /
 
@@ -217,3 +374,24 @@ Disallow: /
 
 User-agent: Bytespider
 Disallow: /
+
+User-agent: SEOkicks
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: SBL-BOT
+Disallow: /
+
+User-agent: BrandVerity
+Disallow: /
+
+User-agent: NetEstate
+Disallow: /
+
+# Host directive (deprecated but harmless)
+Host: https://patientfunnel.kr

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+    <url>
+        <loc>https://patientfunnel.kr/</loc>
+        <image:image>
+            <image:loc>https://patientfunnel.kr/images/og-image.jpg</image:loc>
+            <image:title>Patient Funnel — 환자 경험 중심 10단계 병원 경영 시스템</image:title>
+            <image:caption>2026 AURORA Design — 7,000+ 대표원장이 검증한 병원 성장 OS. 매출 1.5배, 상담 동의율 70%, 광고비 80% 절감.</image:caption>
+            <image:license>https://patientfunnel.kr/</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>https://patientfunnel.kr/images/og-image-2k.png</image:loc>
+            <image:title>Patient Funnel — 2K High Resolution Brand Image</image:title>
+            <image:caption>Patient Funnel AURORA Design System v8.0 — High resolution brand visual.</image:caption>
+        </image:image>
+    </url>
+
+</urlset>

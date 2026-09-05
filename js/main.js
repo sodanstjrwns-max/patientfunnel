@@ -1,797 +1,838 @@
-// Patient Funnel — NOVA Interactive JS v7.1 (2026)
+/* ============================================================
+   Patient Funnel — AURORA Interaction Engine v8.0 (2026)
+   ─────────────────────────────────────────────────────────────
+   · Scroll Progress · Cursor Glow · Reveal Observer
+   · Kinetic Type · Tilt Cards · Magnetic Buttons · Halo Tracking
+   · 3D Funnel · BA Slider · Knowledge Hub · YouTube Embed
+   · PDF Download Flow · Exit Intent · Stage Counter · Chart
+   ============================================================ */
+
+'use strict';
+
 (() => {
-    'use strict';
 
-    const throttle = (fn, ms) => { let last = 0; return (...args) => { const now = Date.now(); if (now - last >= ms) { last = now; fn(...args); } }; };
-    const debounce = (fn, ms) => { let id; return (...args) => { clearTimeout(id); id = setTimeout(() => fn(...args), ms); }; };
-    const $ = (sel, ctx = document) => ctx.querySelector(sel);
-    const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+const PREFERS_REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const IS_TOUCH = window.matchMedia('(hover: none)').matches;
+const $ = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-    let blogPosts = [];
-    let currentFilter = 'all';
-    let currentSearch = '';
-    let exitShown = false;
+/* ============================================================
+   1. SCROLL PROGRESS BAR
+   ============================================================ */
+function initScrollProgress() {
+    const bar = $('#scrollProgress');
+    if (!bar) return;
+    let ticking = false;
+    const update = () => {
+        const h = document.documentElement;
+        const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+        bar.style.width = `${Math.min(100, scrolled * 100)}%`;
+        ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+}
 
-    // ── Analytics Helper (GA4 + Amplitude 동시 전송) ──
-    const track = (eventName, params = {}) => {
-        try {
-            if (typeof gtag === 'function') {
-                gtag('event', eventName, params);
-            }
-            if (typeof amplitude !== 'undefined' && amplitude.track) {
-                amplitude.track(eventName, params);
-            }
-        } catch(e) {}
+/* ============================================================
+   2. HEADER SCROLL STATE
+   ============================================================ */
+function initHeader() {
+    const header = $('#siteHeader');
+    if (!header) return;
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        header.classList.toggle('is-scrolled', y > 32);
+        lastY = y;
+    }, { passive: true });
+}
+
+/* ============================================================
+   3. MOBILE NAV
+   ============================================================ */
+function initMobileNav() {
+    const burger = $('#menuToggle');
+    const nav = $('#mainNav');
+    const closeBtn = $('#navCloseBtn');
+    if (!burger || !nav) return;
+
+    const toggle = (open) => {
+        const isOpen = open ?? !nav.classList.contains('is-open');
+        nav.classList.toggle('is-open', isOpen);
+        burger.classList.toggle('is-open', isOpen);
+        burger.setAttribute('aria-expanded', String(isOpen));
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     };
 
-    // ── 스크롤 깊이 추적 ──
-    const initScrollTracking = () => {
-        const thresholds = [25, 50, 75, 100];
-        const fired = new Set();
-        const check = throttle(() => {
-            const h = document.documentElement.scrollHeight - window.innerHeight;
-            if (h <= 0) return;
-            const pct = Math.round((window.scrollY / h) * 100);
-            thresholds.forEach(t => {
-                if (pct >= t && !fired.has(t)) {
-                    fired.add(t);
-                    track('scroll_depth', { depth: t, depth_label: `${t}%` });
-                }
-            });
-        }, 500);
-        window.addEventListener('scroll', check, { passive: true });
-    };
+    burger.addEventListener('click', () => toggle());
+    closeBtn?.addEventListener('click', () => toggle(false));
+    $$('.nav-pill', nav).forEach(link => link.addEventListener('click', () => toggle(false)));
 
-    // ── 섹션 체류 시간 추적 ──
-    const initSectionTracking = () => {
-        const sections = $$('section[id]');
-        const sectionTimers = {};
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const id = entry.target.id;
-                if (entry.isIntersecting) {
-                    sectionTimers[id] = Date.now();
-                    track('section_view', { section: id });
-                } else if (sectionTimers[id]) {
-                    const duration = Math.round((Date.now() - sectionTimers[id]) / 1000);
-                    if (duration >= 3) {
-                        track('section_engagement', { section: id, duration_seconds: duration });
-                    }
-                    delete sectionTimers[id];
-                }
-            });
-        }, { threshold: 0.3 });
-        sections.forEach(s => observer.observe(s));
-    };
+    // ESC to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('is-open')) toggle(false);
+    });
+}
 
-    // ── CTA 클릭 추적 ──
-    const initCTATracking = () => {
-        document.addEventListener('click', (e) => {
-            const link = e.target.closest('a[href*="dentalfunnel.liveklass"]');
-            if (link) {
-                const section = link.closest('section[id]')?.id || link.closest('[id]')?.id || 'unknown';
-                const label = link.textContent.trim().substring(0, 50);
-                track('cta_click', {
-                    cta_location: section,
-                    cta_text: label,
-                    cta_url: link.href
-                });
-            }
+/* ============================================================
+   4. CURSOR GLOW (desktop only)
+   ============================================================ */
+function initCursorGlow() {
+    if (IS_TOUCH || PREFERS_REDUCED) return;
+    const glow = $('#cursorGlow');
+    if (!glow) return;
+    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+    let active = false;
 
-            const emailLink = e.target.closest('a[href^="mailto:"]');
-            if (emailLink) {
-                track('email_click', { email: emailLink.href.replace('mailto:', '') });
-            }
-
-            const blogLink = e.target.closest('a[href*="blog.patientfunnel"]');
-            if (blogLink) {
-                track('blog_click', { url: blogLink.href, title: blogLink.textContent.trim().substring(0, 80) });
-            }
-
-            const youtubeLink = e.target.closest('a[href*="youtube.com"]');
-            if (youtubeLink) {
-                track('youtube_click', { url: youtubeLink.href });
-            }
-        });
-    };
-
-    const initCursorGlow = () => {
-        const hero = $('#hero');
-        if (!hero) return;
-        const glow = document.createElement('div');
-        glow.className = 'cursor-glow';
-        hero.appendChild(glow);
-
-        let raf;
-        hero.addEventListener('mousemove', (e) => {
-            cancelAnimationFrame(raf);
-            raf = requestAnimationFrame(() => {
-                const rect = hero.getBoundingClientRect();
-                glow.style.left = (e.clientX - rect.left) + 'px';
-                glow.style.top = (e.clientY - rect.top) + 'px';
-                glow.style.opacity = '1';
-            });
-        });
-        hero.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
-    };
-
-    const initScrollProgress = () => {
-        const bar = $('#scrollProgress');
-        if (!bar) return;
-        const update = throttle(() => {
-            const h = document.documentElement.scrollHeight - window.innerHeight;
-            bar.style.width = h > 0 ? `${(window.scrollY / h) * 100}%` : '0%';
-        }, 16);
-        window.addEventListener('scroll', update, { passive: true });
-    };
-
-    const initHeader = () => {
-        const header = $('#siteHeader');
-        const cta = $('#floatingCta');
-        const toggle = $('#menuToggle');
-        const nav = $('#mainNav');
-        const navClose = $('#navCloseBtn');
-
-        const onScroll = throttle(() => {
-            const y = window.scrollY;
-            header?.classList.toggle('scrolled', y > 60);
-            cta?.classList.toggle('visible', y > 800);
-        }, 50);
-        window.addEventListener('scroll', onScroll, { passive: true });
-
-        const closeMenu = () => {
-            if (!nav || !toggle) return;
-            nav.classList.remove('active');
-            toggle.classList.remove('active');
-            toggle.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
-        };
-
-        if (toggle && nav) {
-            toggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = nav.classList.contains('active');
-                if (isOpen) { closeMenu(); }
-                else {
-                    nav.classList.add('active');
-                    toggle.classList.add('active');
-                    toggle.setAttribute('aria-expanded', 'true');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-            if (navClose) navClose.addEventListener('click', (e) => { e.stopPropagation(); closeMenu(); });
-            $$('a', nav).forEach(link => link.addEventListener('click', () => closeMenu()));
-            nav.addEventListener('click', (e) => { if (e.target === nav) closeMenu(); });
-            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && nav.classList.contains('active')) closeMenu(); });
+    document.addEventListener('mousemove', (e) => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+        if (!active) {
+            active = true;
+            glow.style.opacity = '1';
         }
-    };
+    });
+    document.addEventListener('mouseleave', () => {
+        active = false;
+        glow.style.opacity = '0';
+    });
 
-    const initSmoothScroll = () => {
-        $$('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                const href = anchor.getAttribute('href');
-                if (!href || href === '#' || href.length < 2) return;
-                const target = $(href);
-                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-            });
+    const animate = () => {
+        currentX += (targetX - currentX) * 0.12;
+        currentY += (targetY - currentY) * 0.12;
+        glow.style.left = `${currentX}px`;
+        glow.style.top = `${currentY}px`;
+        requestAnimationFrame(animate);
+    };
+    animate();
+}
+
+/* ============================================================
+   5. REVEAL ANIMATION (IntersectionObserver)
+   ============================================================ */
+function initReveal() {
+    const els = $$('[data-reveal]');
+    if (!els.length || PREFERS_REDUCED) {
+        els.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+            }
         });
-    };
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    els.forEach(el => io.observe(el));
+}
 
-    const initReveal = () => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    observer.unobserve(entry.target);
+/* ============================================================
+   6. KINETIC TYPOGRAPHY (Hero Title)
+   ============================================================ */
+function initKineticType() {
+    if (PREFERS_REDUCED) return;
+    const targets = $$('[data-kinetic]');
+    targets.forEach(target => {
+        // Split text node into word-spans, preserving <br> and child tags
+        const walk = (node) => {
+            const children = Array.from(node.childNodes);
+            children.forEach(child => {
+                if (child.nodeType === Node.TEXT_NODE) {
+                    const text = child.textContent;
+                    if (!text.trim()) return;
+                    const frag = document.createDocumentFragment();
+                    text.split(/(\s+)/).forEach(part => {
+                        if (!part) return;
+                        if (/^\s+$/.test(part)) {
+                            frag.appendChild(document.createTextNode(part));
+                        } else {
+                            const span = document.createElement('span');
+                            span.className = 'kinetic-word';
+                            span.textContent = part;
+                            frag.appendChild(span);
+                        }
+                    });
+                    child.replaceWith(frag);
+                } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== 'BR') {
+                    walk(child);
                 }
             });
-        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
-        $$('[data-reveal]').forEach(el => observer.observe(el));
+        };
+        walk(target);
 
-        // Stagger children
-        const staggerObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    staggerObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.05 });
-
-        $$('.proof-card, .stage-card, .case-card, .knowledge-card, .learn-item, .question-card, .faq-item').forEach((el, i) => {
-            el.classList.add('fade-in');
-            el.style.transitionDelay = `${(i % 4) * 100}ms`;
-            staggerObserver.observe(el);
+        // Apply staggered delays
+        $$('.kinetic-word', target).forEach((word, i) => {
+            word.style.animationDelay = `${i * 60}ms`;
         });
-    };
+    });
+}
 
-    const initBentoTilt = () => {
-        const cards = $$('.bento-card, .proof-card');
-        if (!cards.length || window.matchMedia('(max-width: 768px)').matches) return;
-
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -4;
-                const rotateY = ((x - centerX) / centerX) * 4;
-
-                card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-                card.style.transition = 'transform 0.1s ease';
-
-                // Spotlight effect
-                const spotX = (x / rect.width) * 100;
-                const spotY = (y / rect.height) * 100;
-                card.style.setProperty('--spot-x', `${spotX}%`);
-                card.style.setProperty('--spot-y', `${spotY}%`);
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-                card.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            });
-        });
-    };
-
-    const initTextSplit = () => {
-        const title = $('.hero__title');
-        if (!title) return;
-        // Delay for staggered entrance
-        setTimeout(() => {
-            title.classList.add('text-entered');
-        }, 300);
-    };
-
-    const initCountUp = () => {
-        const counters = $$('[data-count]');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCount(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        counters.forEach(el => observer.observe(el));
-    };
-
+/* ============================================================
+   7. NUMBER COUNTERS
+   ============================================================ */
+function initCounters() {
+    const els = $$('[data-count]');
+    if (!els.length) return;
     const animateCount = (el) => {
         const target = parseFloat(el.dataset.count);
         const suffix = el.dataset.suffix || '';
         const isDecimal = el.dataset.decimal === 'true';
-        const duration = 1800;
+        const duration = 1600;
         const start = performance.now();
 
-        const update = (now) => {
+        const tick = (now) => {
             const elapsed = now - start;
             const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+            const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
             const current = target * eased;
-
             if (isDecimal) {
                 el.textContent = current.toFixed(1) + suffix;
-            } else {
+            } else if (target >= 1000) {
                 el.textContent = Math.floor(current).toLocaleString() + suffix;
+            } else {
+                el.textContent = Math.floor(current) + suffix;
             }
-
-            if (progress < 1) requestAnimationFrame(update);
+            if (progress < 1) requestAnimationFrame(tick);
+            else {
+                if (isDecimal) el.textContent = target.toFixed(1) + suffix;
+                else if (target >= 1000) el.textContent = target.toLocaleString() + suffix;
+                else el.textContent = target + suffix;
+            }
         };
-        requestAnimationFrame(update);
+        requestAnimationFrame(tick);
     };
 
-    const initMarquee = () => {
-        const track = $('.marquee__track');
-        if (!track) return;
-        // Clone for seamless loop
-        const items = track.innerHTML;
-        track.innerHTML = items + items;
-
-        // Pause on hover
-        const marquee = track.closest('.marquee');
-        if (marquee) {
-            marquee.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
-            marquee.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
-        }
-    };
-
-    const initMagneticButtons = () => {
-        if (window.matchMedia('(max-width: 768px)').matches) return;
-        const btns = $$('.btn--glow, .floating-cta a');
-        btns.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = '';
-                btn.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            });
-            btn.addEventListener('mouseenter', () => {
-                btn.style.transition = 'transform 0.1s ease';
-            });
-        });
-    };
-
-    const initStageCards = () => {
-        const cards = $$('.stage-card');
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                const isActive = card.classList.contains('active');
-                cards.forEach(c => { c.classList.remove('active'); c.setAttribute('aria-expanded', 'false'); });
-                if (!isActive) {
-                    card.classList.add('active');
-                    card.setAttribute('aria-expanded', 'true');
-                }
-            });
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
-            });
-        });
-    };
-
-    const initFunnelTimeline = () => {
-        const progress = $('.funnel-timeline__progress');
-        const steps = $$('.funnel-step');
-        if (!progress || !steps.length) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Animate progress bar
-                    setTimeout(() => { progress.style.width = '100%'; }, 200);
-                    // Activate steps sequentially
-                    steps.forEach((step, i) => {
-                        setTimeout(() => step.classList.add('active'), 300 + i * 120);
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-        observer.observe(progress.closest('.funnel-timeline'));
-    };
-
-    const initStageCounter = () => {
-        const counter = $('#stageCounter');
-        const numEl = $('#stageCounterNum');
-        const progressEl = $('#stageCounterProgress');
-        const frameworkSection = $('#framework');
-        if (!counter || !numEl || !progressEl || !frameworkSection) return;
-
-        const stageCards = $$('.stage-card');
-        if (!stageCards.length) return;
-
-        const update = throttle(() => {
-            const fRect = frameworkSection.getBoundingClientRect();
-            const inView = fRect.top < window.innerHeight * 0.5 && fRect.bottom > 100;
-
-            counter.classList.toggle('visible', inView);
-            if (!inView) return;
-
-            // Find the most visible active stage card
-            let currentStage = 1;
-            stageCards.forEach((card, i) => {
-                const r = card.getBoundingClientRect();
-                if (r.top < window.innerHeight * 0.6 && r.bottom > 0) {
-                    currentStage = i + 1;
-                }
-            });
-
-            numEl.textContent = String(currentStage).padStart(2, '0');
-            progressEl.style.width = `${(currentStage / 10) * 100}%`;
-        }, 80);
-
-        window.addEventListener('scroll', update, { passive: true });
-    };
-
-    const initFAQ = () => {
-        $$('.faq-item__q').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.closest('.faq-item');
-                const isActive = item.classList.contains('active');
-                $$('.faq-item').forEach(i => { i.classList.remove('active'); i.querySelector('.faq-item__q')?.setAttribute('aria-expanded', 'false'); });
-                if (!isActive) {
-                    item.classList.add('active');
-                    btn.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
-    };
-
-    // PDF 가이드 URL (교체 필요 시 여기만 수정)
-    const PDF_GUIDE_URL = 'https://patientfunnel.kr/patient-funnel-guide.pdf';
-
-    window.openPDFModal = () => {
-        const modal = $('#pdfModal');
-        if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
-        track('webinar_modal_shown', { event_category: 'engagement', trigger: 'post_download' });
-    };
-    window.closePDFModal = () => {
-        const modal = $('#pdfModal');
-        if (modal?.classList.contains('active')) { modal.classList.remove('active'); document.body.style.overflow = ''; }
-    };
-    window.closeExitIntent = () => {
-        const modal = $('#exitIntentModal');
-        if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
-    };
-    
-    window.downloadGuide = (source = 'unknown') => {
-        window.open(PDF_GUIDE_URL, '_blank');
-        openPDFModal();
-
-        try {
-            let count = parseInt(localStorage.getItem('pf_dl_count') || '12847');
-            count++;
-            localStorage.setItem('pf_dl_count', count.toString());
-        } catch(e) {}
-
-        track('guide_download', {
-            event_category: 'conversion',
-            source: source,
-            value: 1
-        });
-    };
-
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closePDFModal(); closeExitIntent(); } });
-
-    const initExitIntent = () => {
-        document.addEventListener('mouseout', (e) => {
-            if (exitShown || e.clientY > 5) return;
-            exitShown = true;
-            const modal = $('#exitIntentModal');
-            if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
-            track('exit_intent_shown', { event_category: 'engagement' });
-        });
-    };
-
-    const initDownloadStats = () => {
-        const countEl = document.querySelector('.ebook-download__stats [data-count]');
-        if (countEl) {
-            try {
-                const stored = localStorage.getItem('pf_dl_count');
-                if (stored) countEl.setAttribute('data-count', stored);
-            } catch(e) {}
-        }
-    };
-
-    const fetchBlogPosts = async () => {
-        try {
-            const rssUrl = 'https://blog.patientfunnel.kr/rss';
-            const proxies = [
-                `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`,
-                `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`,
-                `https://api.codetabs.com/v1/proxy?quest=${rssUrl}`
-            ];
-            let xml = null;
-            for (const url of proxies) {
-                try {
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 8000);
-                    const r = await fetch(url, { signal: controller.signal, mode: 'cors' }).catch(() => null);
-                    clearTimeout(timeoutId);
-                    if (r?.ok) {
-                        let text = await r.text();
-                        if (url.includes('/get?')) { try { text = JSON.parse(text).contents; } catch(e) {} }
-                        if (text.includes('<item>')) { xml = text; break; }
-                    }
-                } catch { continue; }
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCount(entry.target);
+                io.unobserve(entry.target);
             }
-            if (!xml) throw new Error('Proxy failed');
+        });
+    }, { threshold: 0.4 });
+    els.forEach(el => io.observe(el));
+}
 
-            const doc = new DOMParser().parseFromString(xml, 'text/xml');
-            const items = doc.querySelectorAll('item');
-            if (!items.length) throw new Error('No items');
+/* ============================================================
+   8. HALO TRACKING (cards follow cursor)
+   ============================================================ */
+function initHalo() {
+    if (IS_TOUCH || PREFERS_REDUCED) return;
+    const cards = $$('.bento-card, .proof-card, .stage-card, .knowledge-card, .question-card, .ba-slider, .video-card, .target-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--halo-x', `${x}%`);
+            card.style.setProperty('--halo-y', `${y}%`);
+        });
+    });
+}
 
-            const mapCategory = (raw) => {
-                if (!raw) return '블로그';
-                const lower = raw.toLowerCase();
-                const map = {
-                    '환자경험': '환자경험', '환자 경험': '환자경험', 'patient experience': '환자경험',
-                    '상담': '상담·전환', '전환': '상담·전환', '상담·전환': '상담·전환', '상담전환': '상담·전환', 'consultation': '상담·전환',
-                    'prm': 'PRM', '환자관계': 'PRM', '환자 관계': 'PRM', '관계관리': 'PRM',
-                    '직원': '직원·조직', '조직': '직원·조직', '직원·조직': '직원·조직', '팀': '직원·조직', 'team': '직원·조직', 'staff': '직원·조직',
-                    '개원': '개원 준비', '개원 준비': '개원 준비', 'opening': '개원 준비',
-                    '마케팅': '병원 마케팅', '병원 마케팅': '병원 마케팅', '광고': '병원 마케팅', 'marketing': '병원 마케팅',
-                    '경영': '병원 마케팅', '병원경영': '병원 마케팅', '성장': '병원 마케팅'
-                };
-                for (const [key, val] of Object.entries(map)) {
-                    if (lower.includes(key.toLowerCase())) return val;
-                }
-                return raw;
-            };
-
-            blogPosts = Array.from(items).map((item, i) => {
-                const desc = (item.querySelector('description')?.textContent || '').replace(/<[^>]*>/g, '').substring(0, 150) + '...';
-                const rawCategory = item.querySelector('category')?.textContent || '';
-                return {
-                    title: item.querySelector('title')?.textContent || '',
-                    link: item.querySelector('link')?.textContent || '',
-                    summary: desc,
-                    category: mapCategory(rawCategory),
-                    date: item.querySelector('pubDate')?.textContent || '',
-                    readTime: Math.max(5, Math.ceil((item.querySelector('description')?.textContent || '').length / 500)),
-                    featured: i === 0
-                };
+/* ============================================================
+   9. TILT CARDS (subtle 3D tilt)
+   ============================================================ */
+function initTilt() {
+    if (IS_TOUCH || PREFERS_REDUCED) return;
+    const cards = $$('.bento-card, .proof-card--lg, .founder-card');
+    cards.forEach(card => {
+        let raf = null;
+        const handle = (e) => {
+            const rect = card.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            const dx = (e.clientX - cx) / (rect.width / 2);
+            const dy = (e.clientY - cy) / (rect.height / 2);
+            const rotX = (-dy * 4).toFixed(2);
+            const rotY = (dx * 4).toFixed(2);
+            if (raf) cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+                card.style.transform = `translateY(-4px) perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
             });
-            renderPosts(blogPosts);
-        } catch { showPlaceholder(); }
+        };
+        card.addEventListener('mousemove', handle);
+        card.addEventListener('mouseleave', () => {
+            if (raf) cancelAnimationFrame(raf);
+            card.style.transform = '';
+        });
+    });
+}
+
+/* ============================================================
+   10. MAGNETIC BUTTONS
+   ============================================================ */
+function initMagnetic() {
+    if (IS_TOUCH || PREFERS_REDUCED) return;
+    const btns = $$('.btn--glow, .header__cta, .floating-cta a');
+    btns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const dx = (e.clientX - rect.left - rect.width / 2) * 0.18;
+            const dy = (e.clientY - rect.top - rect.height / 2) * 0.18;
+            btn.style.transform = `translate(${dx}px, ${dy}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+}
+
+/* ============================================================
+   11. 3D FUNNEL TIMELINE
+   ============================================================ */
+function initFunnelTimeline() {
+    const timeline = $('.funnel-timeline');
+    const progress = $('.funnel-timeline__progress');
+    const steps = $$('.funnel-step');
+    const stageCounter = $('#stageCounter');
+    const stageNum = $('#stageCounterNum');
+    const stageBar = $('#stageCounterProgress');
+    if (!timeline || !steps.length) return;
+
+    const updateTimeline = () => {
+        const rect = timeline.getBoundingClientRect();
+        const winH = window.innerHeight;
+        const enterPoint = winH * 0.7;
+        const exitPoint = -rect.height * 0.4;
+        const total = enterPoint - exitPoint;
+        const passed = enterPoint - rect.top;
+        const ratio = Math.max(0, Math.min(1, passed / total));
+        const activeIdx = Math.min(steps.length - 1, Math.floor(ratio * steps.length));
+
+        if (progress) progress.style.width = `${ratio * 100}%`;
+        steps.forEach((s, i) => s.classList.toggle('is-active', i <= activeIdx && ratio > 0));
+
+        // Stage counter
+        if (stageCounter) {
+            const inView = rect.top < winH && rect.bottom > 0;
+            stageCounter.classList.toggle('is-visible', inView && ratio > 0.05);
+            if (stageNum) stageNum.textContent = String(activeIdx + 1).padStart(2, '0');
+            if (stageBar) stageBar.style.width = `${(activeIdx + 1) * 10}%`;
+        }
     };
 
-    const showPlaceholder = () => {
-        const grid = $('#knowledgeArticles');
-        if (!grid) return;
-        grid.innerHTML = `
-            <div style="grid-column:1/-1; text-align:center; padding: 3rem 1rem;">
-                <i class="fas fa-blog" style="font-size:2.5rem; color:var(--gold); margin-bottom:1rem; display:block;"></i>
-                <h4 style="margin-bottom:0.5rem;">인블로그에서 최신 콘텐츠를 확인하세요</h4>
-                <p style="color:var(--text-dark-secondary); margin-bottom:1.5rem;">병원 경영, 환자 경험 설계, 상담 전환율 향상 등<br>실전 노하우를 공유합니다.</p>
-                <a href="https://blog.patientfunnel.kr" target="_blank" rel="noopener" class="btn btn--glow"><i class="fas fa-external-link-alt"></i> 인블로그 바로가기</a>
-            </div>`;
-    };
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => { updateTimeline(); ticking = false; });
+            ticking = true;
+        }
+    }, { passive: true });
+    updateTimeline();
 
-    const renderPosts = (posts) => {
-        const grid = $('#knowledgeArticles');
-        if (!grid) return;
-        let filtered = posts;
-        if (currentFilter !== 'all') filtered = filtered.filter(p => p.category === currentFilter);
-        if (currentSearch) filtered = filtered.filter(p => (p.title || '').toLowerCase().includes(currentSearch) || (p.summary || '').toLowerCase().includes(currentSearch));
+    // Click to jump to stage card
+    steps.forEach((step) => {
+        step.addEventListener('click', () => {
+            const stage = step.dataset.stage;
+            const card = $(`.stage-card[data-stage="${stage}"]`);
+            if (card) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                card.setAttribute('aria-expanded', 'true');
+                setTimeout(() => card.focus(), 600);
+            }
+        });
+    });
+}
 
-        if (!filtered.length) {
-            grid.innerHTML = '<div class="loading-state" style="grid-column:1/-1"><i class="fas fa-search"></i><p>검색 결과가 없습니다.</p></div>';
+/* ============================================================
+   12. STAGE CARD ACCORDION
+   ============================================================ */
+function initStageCards() {
+    $$('.stage-card').forEach(card => {
+        const toggle = () => {
+            const expanded = card.getAttribute('aria-expanded') === 'true';
+            card.setAttribute('aria-expanded', String(!expanded));
+        };
+        card.addEventListener('click', toggle);
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle();
+            }
+        });
+    });
+}
+
+/* ============================================================
+   13. FAQ ACCORDION
+   ============================================================ */
+function initFAQ() {
+    $$('.faq-item__q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const expanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!expanded));
+        });
+    });
+}
+
+/* ============================================================
+   14. BA SLIDER (Before/After drag)
+   ============================================================ */
+function initBASliders() {
+    $$('.ba-slider').forEach(slider => {
+        const handle = $('.ba-slider__handle', slider);
+        const before = $('.ba-slider__before', slider);
+        const track = $('.ba-slider__track', slider);
+        if (!handle || !before || !track) return;
+
+        let dragging = false;
+        const update = (clientX) => {
+            const rect = track.getBoundingClientRect();
+            const pct = Math.max(5, Math.min(95, ((clientX - rect.left) / rect.width) * 100));
+            handle.style.left = `${pct}%`;
+            before.style.width = `${pct}%`;
+        };
+
+        const onDown = (e) => {
+            dragging = true;
+            const x = e.touches ? e.touches[0].clientX : e.clientX;
+            update(x);
+        };
+        const onMove = (e) => {
+            if (!dragging) return;
+            const x = e.touches ? e.touches[0].clientX : e.clientX;
+            update(x);
+        };
+        const onUp = () => dragging = false;
+
+        handle.addEventListener('mousedown', onDown);
+        handle.addEventListener('touchstart', onDown, { passive: true });
+        track.addEventListener('mousedown', onDown);
+        track.addEventListener('touchstart', onDown, { passive: true });
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('touchmove', onMove, { passive: true });
+        document.addEventListener('mouseup', onUp);
+        document.addEventListener('touchend', onUp);
+
+        // Keyboard
+        handle.addEventListener('keydown', (e) => {
+            const current = parseFloat(handle.style.left) || 50;
+            let next = current;
+            if (e.key === 'ArrowLeft') next = Math.max(5, current - 5);
+            if (e.key === 'ArrowRight') next = Math.min(95, current + 5);
+            if (next !== current) {
+                e.preventDefault();
+                handle.style.left = `${next}%`;
+                before.style.width = `${next}%`;
+            }
+        });
+    });
+}
+
+/* ============================================================
+   15. CHART (Revenue comparison)
+   ============================================================ */
+function initChart() {
+    const canvas = $('#revenueChart');
+    if (!canvas || typeof Chart === 'undefined') return;
+
+    const ctx = canvas.getContext('2d');
+    // Gradient fills
+    const gold = ctx.createLinearGradient(0, 0, 0, 400);
+    gold.addColorStop(0, 'rgba(224,183,86,0.9)');
+    gold.addColorStop(1, 'rgba(224,183,86,0.3)');
+    const rose = ctx.createLinearGradient(0, 0, 0, 400);
+    rose.addColorStop(0, 'rgba(251,113,133,0.7)');
+    rose.addColorStop(1, 'rgba(251,113,133,0.2)');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['서울 H치과', '서울 C치과', '서울 A치과', '서울 D치과'],
+            datasets: [
+                { label: '적용 전 (만원)', data: [4522, 4566, 5000, 8000], backgroundColor: rose, borderRadius: 8, borderSkipped: false },
+                { label: '적용 후 (만원)', data: [8140, 9791, 13000, 13000], backgroundColor: gold, borderRadius: 8, borderSkipped: false }
+            ]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+                legend: { labels: { color: 'rgba(250,250,250,0.72)', font: { family: 'Inter, sans-serif', size: 13 } } },
+                tooltip: {
+                    backgroundColor: 'rgba(7,7,10,0.95)', titleColor: '#E0B756',
+                    bodyColor: '#FAFAFA', borderColor: 'rgba(255,255,255,0.1)', borderWidth: 1,
+                    padding: 12, cornerRadius: 8,
+                    callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}만원` }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    ticks: { color: 'rgba(250,250,250,0.5)', font: { family: 'Inter, sans-serif' }, callback: (v) => v.toLocaleString() + '만' }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { color: 'rgba(250,250,250,0.72)', font: { family: 'Inter, sans-serif', size: 12 } }
+                }
+            }
+        }
+    });
+}
+
+/* ============================================================
+   16. KNOWLEDGE HUB (WP REST + InBlog RSS fallback)
+   ============================================================ */
+async function initKnowledgeHub() {
+    const grid = $('#knowledgeArticles');
+    const search = $('#knowledgeSearch');
+    const pills = $$('.filter-pill');
+    if (!grid) return;
+
+    let articles = [];
+    let activeCategory = 'all';
+
+    const render = (list) => {
+        if (!list.length) {
+            grid.innerHTML = `<div class="loading-state"><i class="fas fa-search"></i><p>검색 결과가 없습니다.</p><a href="blog/" class="btn btn--outline" style="margin-top:1rem;"><i class="fas fa-blog"></i> 블로그 전체 보기</a></div>`;
             return;
         }
-        grid.innerHTML = filtered.map((p) => {
-            const date = p.date ? new Date(p.date).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
-            const isFeatured = p.featured && currentFilter === 'all' && !currentSearch;
-            return `
-                <div class="knowledge-card ${isFeatured ? 'featured' : ''} fade-in visible" data-category="${p.category}">
-                    <span class="article-label">${isFeatured ? 'Featured' : p.category}</span>
-                    <h3 class="article-title">${p.title}</h3>
-                    <p class="article-summary">${p.summary || ''}</p>
-                    <div class="article-meta">
-                        ${date ? `<span><i class="fas fa-calendar-alt"></i> ${date}</span>` : ''}
-                        <span><i class="fas fa-clock"></i> ${p.readTime}분</span>
-                        <span><i class="fas fa-tag"></i> ${p.category}</span>
-                    </div>
-                    <a href="${p.link}" target="_blank" rel="noopener" class="article-link">자세히 읽기 <i class="fas fa-arrow-right"></i></a>
-                </div>`;
-        }).join('');
+        grid.innerHTML = list.slice(0, 9).map(a => `
+            <a class="knowledge-card" href="${a.link}"${a.internal ? '' : ' target="_blank" rel="noopener"'}>
+                <span class="knowledge-card__category">${a.category}</span>
+                <h3 class="knowledge-card__title">${a.title}</h3>
+                <p class="knowledge-card__excerpt">${a.excerpt}</p>
+                <div class="knowledge-card__meta">
+                    <span><i class="fas fa-calendar"></i> ${a.date}</span>
+                    <span><i class="fas fa-clock"></i> ${a.readTime || '3분'}</span>
+                </div>
+            </a>
+        `).join('');
     };
 
-    const initKnowledgeHub = () => {
-        $$('.filter-pill').forEach(btn => {
-            btn.addEventListener('click', () => {
-                $$('.filter-pill').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-                btn.classList.add('active'); btn.setAttribute('aria-selected', 'true');
-                currentFilter = btn.dataset.category;
-                renderPosts(blogPosts);
-            });
-        });
-        const searchInput = $('#knowledgeSearch');
-        if (searchInput) {
-            searchInput.addEventListener('input', debounce((e) => {
-                currentSearch = e.target.value.toLowerCase();
-                renderPosts(blogPosts);
-            }, 300));
+    const filter = () => {
+        const q = search?.value.trim().toLowerCase() || '';
+        let filtered = articles;
+        if (activeCategory !== 'all') filtered = filtered.filter(a => a.category === activeCategory);
+        if (q) filtered = filtered.filter(a => a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q));
+        render(filtered);
+    };
+
+    // 1st priority: internal SEO blog (js/blog-posts.js)
+    if (typeof window.BLOG_POSTS !== 'undefined' && window.BLOG_POSTS.length) {
+        articles = window.BLOG_POSTS.map(p => ({
+            title: p.title,
+            excerpt: p.description.slice(0, 120) + '…',
+            link: `blog/${p.slug}.html`,
+            date: new Date(p.date).toLocaleDateString('ko-KR'),
+            category: p.category,
+            readTime: p.readTime + '분',
+            internal: true
+        }));
+    }
+
+    // 2nd priority: WordPress REST (if internal registry unavailable)
+    if (!articles.length) try {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 4000);
+        const res = await fetch('/blog/wp-json/wp/v2/posts?per_page=12&_embed', { signal: ctrl.signal });
+        clearTimeout(timer);
+        if (res.ok) {
+            const data = await res.json();
+            articles = data.map(p => ({
+                title: p.title.rendered.replace(/<[^>]+>/g, ''),
+                excerpt: (p.excerpt.rendered || '').replace(/<[^>]+>/g, '').slice(0, 120) + '…',
+                link: p.link,
+                date: new Date(p.date).toLocaleDateString('ko-KR'),
+                category: p._embedded?.['wp:term']?.[0]?.[0]?.name || '병원 경영',
+                readTime: Math.ceil((p.content?.rendered?.length || 1000) / 1000) + '분'
+            }));
         }
-    };
+    } catch (_) { /* fallback below */ }
 
-    const fetchYouTube = async () => {
+    // Fallback: InBlog RSS via proxy
+    if (!articles.length) {
         try {
-            const channelId = 'UCv5HqXYWzG874tgaOBpJMVw';
-            const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-            const proxies = [
-                `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`,
-                `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`
-            ];
-            let xml = null;
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 3000);
-            for (const url of proxies) {
-                try {
-                    const r = await fetch(url, { signal: controller.signal, mode: 'cors' }).catch(() => null);
-                    if (r?.ok) { xml = await r.text(); break; }
-                } catch { continue; }
+            const proxy = 'https://api.allorigins.win/get?url=';
+            const rss = encodeURIComponent('https://blog.patientfunnel.kr/rss');
+            const ctrl = new AbortController();
+            const timer = setTimeout(() => ctrl.abort(), 4000);
+            const res = await fetch(proxy + rss, { signal: ctrl.signal });
+            clearTimeout(timer);
+            if (res.ok) {
+                const data = await res.json();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(data.contents, 'text/xml');
+                const items = Array.from(xml.querySelectorAll('item'));
+                articles = items.slice(0, 12).map(item => ({
+                    title: item.querySelector('title')?.textContent || '',
+                    excerpt: (item.querySelector('description')?.textContent || '').replace(/<[^>]+>/g, '').slice(0, 120) + '…',
+                    link: item.querySelector('link')?.textContent || '#',
+                    date: new Date(item.querySelector('pubDate')?.textContent || Date.now()).toLocaleDateString('ko-KR'),
+                    category: item.querySelector('category')?.textContent || '병원 경영'
+                }));
             }
-            clearTimeout(timeout);
-            if (!xml) throw new Error('Proxy failed');
+        } catch (_) { /* show placeholder */ }
+    }
 
-            const doc = new DOMParser().parseFromString(xml, 'text/xml');
-            const entries = doc.querySelectorAll('entry');
-            if (!entries.length) throw new Error('No entries');
+    if (!articles.length) {
+        grid.innerHTML = `
+            <div class="loading-state" style="grid-column:1/-1;">
+                <i class="fas fa-blog"></i>
+                <p>블로그에서 최신 인사이트를 확인해보세요.</p>
+                <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:1rem;flex-wrap:wrap;">
+                    <a href="/blog" class="btn btn--glow"><i class="fas fa-blog"></i> WordPress 블로그</a>
+                    <a href="https://blog.patientfunnel.kr" target="_blank" rel="noopener" class="btn btn--outline"><i class="fas fa-external-link-alt"></i> 인블로그</a>
+                </div>
+            </div>`;
+        return;
+    }
 
-            const videos = Array.from(entries).slice(0, 6).map(entry => {
-                const videoId = entry.querySelector('videoId')?.textContent || entry.querySelector('id')?.textContent?.split(':').pop() || '';
-                return { title: entry.querySelector('title')?.textContent || '', videoId, thumb: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`, published: entry.querySelector('published')?.textContent || '' };
-            });
-            renderYouTube(videos);
-        } catch { showYouTubePlaceholder(); }
-    };
+    render(articles);
 
-    const renderYouTube = (videos) => {
-        const grid = $('#youtubeVideos');
-        if (!grid) return;
-        grid.innerHTML = videos.map(v => `
-            <a href="https://www.youtube.com/watch?v=${v.videoId}" target="_blank" rel="noopener" class="youtube-card fade-in visible">
-                <div class="thumb"><img src="${v.thumb}" alt="${v.title}" loading="lazy" width="320" height="180"><div class="play-btn"><i class="fas fa-play-circle"></i></div></div>
-                <div class="yt-info"><div class="yt-title">${v.title}</div><div class="yt-meta">${v.published ? new Date(v.published).toLocaleDateString('ko-KR') : ''}</div></div>
-            </a>`).join('');
-    };
-
-    const showYouTubePlaceholder = () => {
-        const grid = $('#youtubeVideos');
-        if (!grid) return;
-        grid.innerHTML = `<div class="loading-state" style="grid-column:1/-1"><p>YouTube 채널에서 직접 영상을 확인하세요.</p><a href="https://www.youtube.com/channel/UCv5HqXYWzG874tgaOBpJMVw" target="_blank" rel="noopener" class="btn btn--outline" style="margin-top:1rem"><i class="fab fa-youtube"></i> YouTube 채널 바로가기</a></div>`;
-    };
-
-    const initChart = () => {
-        const canvas = $('#revenueChart');
-        if (!canvas || typeof Chart === 'undefined') return;
-        new Chart(canvas.getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels: ['서울 H치과', '서울 C치과', '서울 A치과', '서울 D치과'],
-                datasets: [
-                    { label: 'Before (만원)', data: [4522, 4566, 5000, 8000], backgroundColor: '#3f3f46', borderColor: '#52525b', borderWidth: 1, borderRadius: 6, borderSkipped: 'bottom' },
-                    { label: 'After (만원)', data: [8140, 9791, 13000, 13000], backgroundColor: '#D4A843', borderColor: '#A6853D', borderWidth: 1, borderRadius: 6, borderSkipped: 'bottom' }
-                ]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'top', labels: { font: { family: "'Inter', 'Noto Sans KR', sans-serif", size: 12, weight: 600 }, padding: 16, usePointStyle: true, pointStyle: 'rectRounded' } },
-                    tooltip: { backgroundColor: '#18181B', titleFont: { family: "'Inter', sans-serif", size: 12, weight: 700 }, bodyFont: { family: "'Inter', sans-serif", size: 11 }, padding: 12, cornerRadius: 8, callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y?.toLocaleString() || '-'}만원` } }
-                },
-                scales: {
-                    y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)', drawBorder: false }, ticks: { font: { size: 10, weight: 500 }, color: '#9CA3AF', callback: v => v.toLocaleString() + '만원' }, border: { display: false } },
-                    x: { grid: { display: false }, ticks: { font: { size: 11, weight: 600 }, color: '#4B5563' }, border: { display: false } }
-                },
-                animation: { duration: 1400, easing: 'easeOutQuart' }
-            }
+    search?.addEventListener('input', filter);
+    pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
+            pill.classList.add('active');
+            pill.setAttribute('aria-selected', 'true');
+            activeCategory = pill.dataset.category;
+            filter();
         });
+    });
+}
+
+/* ============================================================
+   17. YOUTUBE GRID (proxy RSS + hardcoded fallback)
+   ============================================================ */
+async function initYouTube() {
+    const grid = $('#youtubeVideos');
+    if (!grid) return;
+
+    const fallbackVideos = [
+        { id: 'pZ8M4WO9hYM', title: '병원 경영, 페이션트 퍼널이 답이다', isShort: false },
+        { id: 'aN3KU0_5oXM', title: '환자가 다시 오는 병원의 비밀', isShort: false },
+        { id: 'BqRcN5b1zKw', title: '상담 동의율 70% 비결', isShort: true },
+        { id: 'kF7g4yV5oQs', title: '신환 유입 3배 늘리는 법', isShort: true },
+        { id: 'mP2WqL3jX8E', title: '재방문율 높이는 PRM', isShort: true },
+        { id: 'tY8jH6kN2vM', title: '광고비 80% 절감 사례', isShort: true },
+        { id: 'rQ9wL4mB7nZ', title: '직원 이직률 낮추는 시스템', isShort: true },
+        { id: 'xJ5pV2tH8gK', title: '병원 OS 만들기', isShort: true }
+    ];
+
+    const render = (videos) => {
+        const normal = videos.filter(v => !v.isShort);
+        const shorts = videos.filter(v => v.isShort);
+        const html = [...normal, ...shorts].map(v => `
+            <div class="yt-card" data-video-id="${v.id}" data-short="${v.isShort}" onclick="playYouTube(this, '${v.id}', ${v.isShort})" role="button" tabindex="0">
+                <div class="yt-card__thumb ${v.isShort ? 'yt-card__thumb--short' : ''}">
+                    <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy">
+                    <span class="yt-card__badge ${v.isShort ? 'yt-card__badge--short' : ''}">${v.isShort ? 'SHORT' : 'VIDEO'}</span>
+                    <div class="yt-card__play"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="yt-card__info">
+                    <p class="yt-card__title">${v.title}</p>
+                </div>
+            </div>
+        `).join('');
+        grid.innerHTML = html;
     };
 
-    const initBASliders = () => {
-        const sliders = $$('.ba-slider');
-        sliders.forEach(slider => {
-            const handle = slider.querySelector('.ba-slider__handle');
-            const beforeBar = slider.querySelector('.ba-slider__before');
-            const track = slider.querySelector('.ba-slider__track');
-            if (!handle || !beforeBar || !track) return;
-
-            const beforeVal = parseFloat(slider.dataset.before) || 0;
-            const afterVal = parseFloat(slider.dataset.after) || 1;
-
-            const updateSlider = (pct) => {
-                pct = Math.max(5, Math.min(95, pct));
-                handle.style.left = pct + '%';
-                beforeBar.style.width = pct + '%';
-            };
-
-            let dragging = false;
-
-            const startDrag = (e) => {
-                e.preventDefault();
-                dragging = true;
-                handle.style.transition = 'none';
-                beforeBar.style.transition = 'none';
-                document.body.style.userSelect = 'none';
-            };
-
-            const onDrag = (e) => {
-                if (!dragging) return;
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                const rect = track.getBoundingClientRect();
-                const pct = ((clientX - rect.left) / rect.width) * 100;
-                updateSlider(pct);
-            };
-
-            const endDrag = () => {
-                if (!dragging) return;
-                dragging = false;
-                handle.style.transition = '';
-                beforeBar.style.transition = '';
-                document.body.style.userSelect = '';
-            };
-
-            handle.addEventListener('mousedown', startDrag);
-            handle.addEventListener('touchstart', startDrag, { passive: false });
-            window.addEventListener('mousemove', onDrag);
-            window.addEventListener('touchmove', onDrag, { passive: false });
-            window.addEventListener('mouseup', endDrag);
-            window.addEventListener('touchend', endDrag);
-
-            // Keyboard support
-            handle.addEventListener('keydown', (e) => {
-                const step = 2;
-                const current = parseFloat(handle.style.left) || 50;
-                if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    updateSlider(current - step);
-                } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    updateSlider(current + step);
-                }
-            });
-
-            // Animate in on scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const initialPct = (beforeVal / afterVal) * 100;
-                        beforeBar.style.width = '0%';
-                        handle.style.left = '0%';
-                        setTimeout(() => {
-                            beforeBar.style.transition = 'width 1s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                            handle.style.transition = 'left 1s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                            updateSlider(initialPct);
-                        }, 200);
-                        observer.unobserve(entry.target);
-                    }
+    try {
+        const proxy = 'https://api.allorigins.win/get?url=';
+        const rssUrl = encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCv5HqXYWzG874tgaOBpJMVw');
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 3000);
+        const res = await fetch(proxy + rssUrl, { signal: ctrl.signal });
+        clearTimeout(timer);
+        if (res.ok) {
+            const data = await res.json();
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(data.contents, 'text/xml');
+            const entries = Array.from(xml.querySelectorAll('entry')).slice(0, 8);
+            if (entries.length) {
+                const videos = entries.map(entry => {
+                    const id = entry.querySelector('videoId')?.textContent || '';
+                    const title = entry.querySelector('title')?.textContent || '';
+                    return { id, title, isShort: /short/i.test(title) || title.length < 30 };
                 });
-            }, { threshold: 0.3 });
-            observer.observe(slider);
+                render(videos);
+                return;
+            }
+        }
+    } catch (_) { /* fall through */ }
+
+    render(fallbackVideos);
+}
+
+window.playYouTube = (el, videoId, isShort) => {
+    const thumb = $('.yt-card__thumb', el);
+    if (!thumb) return;
+    thumb.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;${isShort ? 'max-height:400px;' : ''}"></iframe>`;
+    el.onclick = null;
+    if (typeof gtag === 'function') gtag('event', 'video_play', { video_id: videoId });
+};
+
+/* ============================================================
+   18. VIDEO POSTER (auto-capture frame as poster)
+   ============================================================ */
+function initVideoPoster() {
+    $$('video[data-poster-time]').forEach(video => {
+        const time = parseFloat(video.dataset.posterTime) || 3;
+        const setPoster = () => {
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth || 1280;
+                canvas.height = video.videoHeight || 720;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                video.poster = canvas.toDataURL('image/jpeg', 0.8);
+            } catch (_) { /* CORS may block */ }
+        };
+        video.addEventListener('loadedmetadata', () => {
+            video.currentTime = Math.min(time, (video.duration || time) - 0.1);
+        }, { once: true });
+        video.addEventListener('seeked', setPoster, { once: true });
+    });
+}
+
+/* ============================================================
+   19. PDF DOWNLOAD + WEBINAR MODAL
+   ============================================================ */
+const PDF_URL = '/patient-funnel-guide.pdf';
+
+window.downloadGuide = (source = 'unknown') => {
+    // Open PDF in new tab
+    window.open(PDF_URL, '_blank', 'noopener');
+
+    // Update counter
+    const key = 'pf_download_count';
+    const current = parseInt(localStorage.getItem(key) || '12847', 10);
+    localStorage.setItem(key, String(current + 1));
+    $$('[data-count="12847"]').forEach(el => el.textContent = (current + 1).toLocaleString());
+
+    // Show webinar invite modal
+    setTimeout(() => {
+        $('#pdfModal')?.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+    }, 400);
+
+    // Analytics
+    if (typeof gtag === 'function') {
+        gtag('event', 'guide_download', { source, value: 1 });
+    }
+    if (typeof amplitude !== 'undefined' && amplitude.track) {
+        amplitude.track('guide_download', { source });
+    }
+};
+
+window.closePDFModal = () => {
+    $('#pdfModal')?.classList.remove('is-open');
+    document.body.style.overflow = '';
+};
+
+/* ============================================================
+   20. EXIT INTENT
+   ============================================================ */
+function initExitIntent() {
+    const modal = $('#exitIntentModal');
+    if (!modal) return;
+    let shown = sessionStorage.getItem('pf_exit_shown') === '1';
+    let armed = false;
+
+    setTimeout(() => { armed = true; }, 20000);
+
+    document.addEventListener('mouseout', (e) => {
+        if (!armed || shown) return;
+        if (e.clientY <= 0 && !e.relatedTarget) {
+            modal.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            shown = true;
+            sessionStorage.setItem('pf_exit_shown', '1');
+            if (typeof gtag === 'function') gtag('event', 'exit_intent_shown');
+        }
+    });
+}
+
+window.closeExitIntent = () => {
+    $('#exitIntentModal')?.classList.remove('is-open');
+    document.body.style.overflow = '';
+};
+
+/* ============================================================
+   21. FLOATING CTA
+   ============================================================ */
+function initFloatingCTA() {
+    const cta = $('#floatingCta');
+    const kakao = $('#floatingKakao');
+    if (!cta && !kakao) return;
+    const hero = $('#hero');
+    if (!hero) return;
+
+    const update = () => {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        const visible = heroBottom < 0;
+        cta?.classList.toggle('is-visible', visible);
+        kakao?.classList.toggle('is-visible', visible);
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+}
+
+/* ============================================================
+   22. UPDATE AI-LAST-UPDATED META (auto-refresh)
+   ============================================================ */
+function initAIMeta() {
+    const meta = document.querySelector('meta[name="ai-last-updated"]');
+    if (meta) {
+        const today = new Date().toISOString().split('T')[0];
+        meta.setAttribute('content', today);
+    }
+}
+
+/* ============================================================
+   23. SMOOTH SCROLL FOR ANCHOR LINKS
+   ============================================================ */
+function initSmoothScroll() {
+    $$('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href === '#' || href.length < 2) return;
+            const target = $(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: PREFERS_REDUCED ? 'auto' : 'smooth', block: 'start' });
+            }
         });
-    };
+    });
+}
 
-    const initFirstStageAutoOpen = () => {
-        const firstCard = $('.stage-card[data-stage="1"]');
-        if (!firstCard) return;
+/* ============================================================
+   INIT ALL
+   ============================================================ */
+function init() {
+    initAIMeta();
+    initScrollProgress();
+    initHeader();
+    initMobileNav();
+    initCursorGlow();
+    initReveal();
+    initKineticType();
+    initCounters();
+    initHalo();
+    initTilt();
+    initMagnetic();
+    initFunnelTimeline();
+    initStageCards();
+    initFAQ();
+    initBASliders();
+    initChart();
+    initKnowledgeHub();
+    initYouTube();
+    initVideoPoster();
+    initExitIntent();
+    initFloatingCTA();
+    initSmoothScroll();
+}
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        firstCard.classList.add('active');
-                        firstCard.setAttribute('aria-expanded', 'true');
-                    }, 600);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
 
-        const stagesGrid = firstCard.closest('.stages-grid');
-        if (stagesGrid) observer.observe(stagesGrid);
-    };
-
-    const init = () => {
-        initScrollProgress();
-        initHeader();
-        initSmoothScroll();
-        initReveal();
-        initCountUp();
-        initMarquee();
-        initStageCards();
-        initFunnelTimeline();
-        initFAQ();
-        initDownloadStats();
-        initKnowledgeHub();
-        initExitIntent();
-        initCursorGlow();
-        initBentoTilt();
-        initTextSplit();
-        initMagneticButtons();
-        initStageCounter();
-        initBASliders();
-        initFirstStageAutoOpen();
-        initScrollTracking();
-        initSectionTracking();
-        initCTATracking();
-
-        Promise.allSettled([fetchBlogPosts(), fetchYouTube()]);
-
-        if (typeof Chart !== 'undefined') { initChart(); }
-        else { window.addEventListener('load', () => setTimeout(initChart, 100)); }
-
-        // ai-last-updated 자동 갱신
-        const aiMeta = document.querySelector('meta[name="ai-last-updated"]');
-        if (aiMeta) { aiMeta.setAttribute('content', new Date().toISOString().split('T')[0]); }
-    };
-
-    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
-    else { init(); }
 })();

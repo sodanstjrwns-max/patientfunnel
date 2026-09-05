@@ -1,0 +1,12 @@
+# Patient Funnel Security Policy
+# https://patientfunnel.kr/.well-known/security.txt
+
+Contact: mailto:contact@patientfunnel.kr
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: ko, en
+Canonical: https://patientfunnel.kr/.well-known/security.txt
+Policy: https://patientfunnel.kr/
+
+# Patient Funnel takes security seriously.
+# If you discover a security vulnerability, please contact us.
+# Last updated: 2026-05-27

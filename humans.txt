@@ -1,0 +1,30 @@
+/* TEAM */
+Founder & Lead: 문석준 (Moon Seokjun)
+  Title: 서울비디치과 대표원장 / Patient Funnel 창립자
+  Education: 서울대학교 치의학과, 통합치의학과 전문의
+  Site: https://patientfunnel.kr
+  Location: Seoul, Korea
+
+/* THANKS */
+7,000+ 대표원장님들, 200+ 올인원 클래스 수강생, 서울비디치과 가족분들
+
+/* SITE */
+Last update: 2026-05-27
+Language: Korean (ko-KR)
+Standards: HTML5, CSS3, ES2022, Schema.org, Open Graph, llms.txt
+Design System: AURORA v8.0 (NOVA v7.3 → AURORA v8.0)
+Components: Aurora Mesh Gradient, Liquid Glass v2, Kinetic Typography,
+            Spatial Bento Grid, 3D Funnel Timeline, Magnetic Cursor
+Software: Inter, Noto Sans KR, Pretendard, Chart.js, Font Awesome
+
+/* CONTACT */
+Email: contact@patientfunnel.kr
+KakaoTalk: https://pf.kakao.com/_xkxnMn
+YouTube: https://www.youtube.com/channel/UCv5HqXYWzG874tgaOBpJMVw
+
+                          ┓ ┓
+                          ┃ ┃ Patient Funnel
+                          ┃ ┃
+                          ┓ ┓
+                          ┃ ┃ AURORA v8.0
+                          ┓ ┓ 2026

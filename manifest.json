@@ -1,0 +1,56 @@
+{
+  "name": "Patient Funnel — 환자 경험 중심 10단계 병원 경영 시스템",
+  "short_name": "Patient Funnel",
+  "description": "7,000+ 대표원장이 검증한 환자 경험 중심 병원 경영 OS. 광고비 의존 없이 지속 성장하는 10단계 환자 여정 프레임워크.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F6F3EC",
+  "theme_color": "#0E5B43",
+  "lang": "ko-KR",
+  "dir": "ltr",
+  "categories": ["business", "education", "medical", "productivity"],
+  "icons": [
+    {
+      "src": "images/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "images/og-image-2k.png",
+      "sizes": "2752x1536",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "무료 웨비나 신청",
+      "short_name": "웨비나",
+      "description": "Patient Funnel 무료 라이브 웨비나",
+      "url": "https://dentalfunnel.liveklass.com/"
+    },
+    {
+      "name": "10단계 프레임워크",
+      "short_name": "Framework",
+      "description": "Patient Funnel 10단계 살펴보기",
+      "url": "/#framework"
+    },
+    {
+      "name": "성과 사례",
+      "short_name": "사례",
+      "description": "적용 병원 성장 사례",
+      "url": "/#cases"
+    },
+    {
+      "name": "무료 PDF 가이드",
+      "short_name": "PDF",
+      "description": "17p 병원 경영 가이드 다운로드",
+      "url": "/patient-funnel-guide.pdf"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

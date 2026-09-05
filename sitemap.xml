@@ -1,48 +1,541 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+    <!-- ===== MAIN PAGE ===== -->
     <url>
         <loc>https://patientfunnel.kr/</loc>
-        <lastmod>2026-03-23</lastmod>
+        <lastmod>2026-08-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="ko-KR" href="https://patientfunnel.kr/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://patientfunnel.kr/"/>
         <image:image>
             <image:loc>https://patientfunnel.kr/images/og-image.jpg</image:loc>
-            <image:title>Patient Funnel - 환자 경험 중심 10단계 병원 경영 시스템</image:title>
-            <image:caption>6,000+ 대표원장이 검증한 병원 성장 OS. 소개 환자 2배 증가, 6개월 평균 매출 1.5배 성장, 상담 동의율 70%, 광고비 80% 절감.</image:caption>
+            <image:title>Patient Funnel — 환자 경험 중심 10단계 병원 경영 시스템</image:title>
+            <image:caption>7,000+ 대표원장이 검증한 병원 성장 OS. 환자 경험 중심 10단계 병원 경영 시스템.</image:caption>
         </image:image>
         <video:video>
             <video:thumbnail_loc>https://patientfunnel.kr/images/og-image.jpg</video:thumbnail_loc>
-            <video:title>페이션트 퍼널 - 문석준 원장 인터뷰</video:title>
-            <video:description>서울비디치과 문석준 대표원장이 환자 경험 중심 10단계 병원 경영 시스템 Patient Funnel에 대해 설명합니다.</video:description>
+            <video:title>문석준 원장 — Patient Funnel 창립자 인터뷰</video:title>
+            <video:description>서울비디치과 문석준 대표원장이 환자 경험 중심 10단계 병원 경영 시스템 Patient Funnel을 직접 설명합니다. 월 6천만원에서 연 120억원으로 병원을 성장시킨 실전 노하우.</video:description>
             <video:content_loc>https://www.genspark.ai/api/files/s/B0NcsjKh</video:content_loc>
             <video:duration>300</video:duration>
-            <video:publication_date>2025-01-01</video:publication_date>
+            <video:publication_date>2025-01-01T00:00:00+09:00</video:publication_date>
             <video:family_friendly>yes</video:family_friendly>
             <video:live>no</video:live>
+            <video:requires_subscription>no</video:requires_subscription>
+            <video:platform relationship="allow">web mobile tv</video:platform>
+            <video:uploader info="https://patientfunnel.kr/">Patient Funnel</video:uploader>
         </video:video>
         <video:video>
             <video:thumbnail_loc>https://patientfunnel.kr/images/og-image.jpg</video:thumbnail_loc>
-            <video:title>페이션트 퍼널 적용 후기 - 원장님 인터뷰 1</video:title>
+            <video:title>페이션트 퍼널 적용 후기 — 원장님 인터뷰 1</video:title>
             <video:description>페이션트 퍼널을 실제 적용한 원장님의 솔직한 후기. 병원 매출 성장과 환자 경험 개선 사례를 공유합니다.</video:description>
             <video:content_loc>https://www.genspark.ai/api/files/s/MiW8EJXa</video:content_loc>
             <video:duration>180</video:duration>
-            <video:publication_date>2025-06-01</video:publication_date>
+            <video:publication_date>2025-06-01T00:00:00+09:00</video:publication_date>
             <video:family_friendly>yes</video:family_friendly>
             <video:live>no</video:live>
         </video:video>
         <video:video>
             <video:thumbnail_loc>https://patientfunnel.kr/images/og-image.jpg</video:thumbnail_loc>
-            <video:title>페이션트 퍼널 적용 후기 - 원장님 인터뷰 2</video:title>
+            <video:title>페이션트 퍼널 적용 후기 — 원장님 인터뷰 2</video:title>
             <video:description>페이션트 퍼널로 병원 성장을 경험한 원장님의 이야기. 실전 적용 방법과 결과를 공유합니다.</video:description>
             <video:content_loc>https://www.genspark.ai/api/files/s/Hew1tbDd</video:content_loc>
             <video:duration>180</video:duration>
-            <video:publication_date>2025-06-01</video:publication_date>
+            <video:publication_date>2025-06-01T00:00:00+09:00</video:publication_date>
             <video:family_friendly>yes</video:family_friendly>
             <video:live>no</video:live>
         </video:video>
+    </url>
+
+    <!-- ===== SECTION ANCHORS (Section Sitemap for SGE/AI snippets) ===== -->
+    <url>
+        <loc>https://patientfunnel.kr/#framework</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/#cases</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/#about</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/#webinar</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/#resources</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/#faq</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/#proof</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ===== ASSET PAGES ===== -->
+    <url>
+        <loc>https://patientfunnel.kr/patient-funnel-guide.pdf</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/llms.txt</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/llms-full.txt</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- ===== BLOG (병원 경영 블로그 — SEO Content Hub) ===== -->
+    <url>
+        <loc>https://patientfunnel.kr/blog/</loc>
+        <lastmod>2026-07-07</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.95</priority>
+        <xhtml:link rel="alternate" hreflang="ko-KR" href="https://patientfunnel.kr/blog/"/>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/glossary.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <!-- Pillar Guides (헤드 키워드 완벽 가이드) -->
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-management-complete-guide.html</loc>
+        <lastmod>2026-07-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/dental-clinic-management-guide.html</loc>
+        <lastmod>2026-07-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/dental-marketing-guide.html</loc>
+        <lastmod>2026-07-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-self-diagnosis-checklist.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-phone-consultation-tips.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-waiting-room-design.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/treatment-explanation-report.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-mission-vision-values.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/doctor-as-ceo-role.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-content-marketing-blog-youtube.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/dental-consultation-manager-skills.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/patient-fan-loyalty-strategy.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/naver-place-local-seo.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/patient-referral-system.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-no-show-prevention.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-homepage-conversion.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-kpi-dashboard.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-marketing-strategy-2026.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/dental-new-patient-acquisition.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/consultation-conversion-rate.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/patient-retention-recall-system.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/patient-experience-design.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-ad-cost-reduction.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/dental-clinic-opening-checklist.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-staff-training-system.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/prm-patient-relationship-management.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-revenue-growth-plateau.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/blog/hospital-online-reputation-review.html</loc>
+        <lastmod>2026-07-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ===== COLUMN (문석준 1인칭 칼럼) ===== -->
+    <url>
+        <loc>https://patientfunnel.kr/column/</loc>
+        <lastmod>2026-09-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/doctor-mode.html</loc>
+        <lastmod>2026-08-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/ownership-myth.html</loc>
+        <lastmod>2026-08-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/before-new-patients.html</loc>
+        <lastmod>2026-08-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/expensive-is-a-signal.html</loc>
+        <lastmod>2026-08-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/failure-is-data.html</loc>
+        <lastmod>2026-08-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/referral-patients.html</loc>
+        <lastmod>2026-08-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/consultation-conversion.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/hospital-marketing-truth.html</loc>
+        <lastmod>2026-08-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/staff-turnover.html</loc>
+        <lastmod>2026-08-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/patient-experience-design.html</loc>
+        <lastmod>2026-08-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/phone-etiquette.html</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/noshow-prevention.html</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/recall-system.html</loc>
+        <lastmod>2026-08-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/hospital-blog-marketing.html</loc>
+        <lastmod>2026-08-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/clinic-positioning.html</loc>
+        <lastmod>2026-08-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/sns-hook-content.html</loc>
+        <lastmod>2026-09-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/local-seo-keywords.html</loc>
+        <lastmod>2026-09-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/hospital-youtube.html</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/treatment-plan-explanation.html</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/high-value-consultation.html</loc>
+        <lastmod>2026-09-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/non-covered-pricing.html</loc>
+        <lastmod>2026-09-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/head-manager-training.html</loc>
+        <lastmod>2026-09-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/front-desk-hospitality.html</loc>
+        <lastmod>2026-09-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/new-staff-onboarding.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/hospital-meeting-execution.html</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/hospital-system-management.html</loc>
+        <lastmod>2026-09-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/hospital-manual-checklist.html</loc>
+        <lastmod>2026-09-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/hospital-productivity.html</loc>
+        <lastmod>2026-09-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/clinic-profit-management.html</loc>
+        <lastmod>2026-09-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/hospital-business-strategy.html</loc>
+        <lastmod>2026-09-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/doctor-time-management.html</loc>
+        <lastmod>2026-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/new-patient-retention.html</loc>
+        <lastmod>2026-09-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/patient-satisfaction-survey.html</loc>
+        <lastmod>2026-09-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/patient-experience-moments.html</loc>
+        <lastmod>2026-09-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/column/hospital-word-of-mouth.html</loc>
+        <lastmod>2026-09-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ===== LEGAL PAGES (PG 심사 필수) ===== -->
+    <url>
+        <loc>https://patientfunnel.kr/terms/</loc>
+        <lastmod>2026-08-20</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/privacy/</loc>
+        <lastmod>2026-08-20</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://patientfunnel.kr/refund/</loc>
+        <lastmod>2026-08-20</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
 
 </urlset>

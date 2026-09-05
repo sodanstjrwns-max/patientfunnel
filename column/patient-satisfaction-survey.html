@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>환자 만족도 조사 — 물어볼 것은 단 하나, 추천하시겠습니까 | 문석준 칼럼</title>
+    <meta name="description" content="20문항짜리 만족도 설문이 아무것도 바꾸지 못하는 이유 — 만족은 립서비스지만 추천은 자기 평판을 거는 행동이기 때문이다. 0~10점 추천 의향 단 한 문항의 NPS, 9~10점만 추천자로 세는 이유, 48시간 폐쇄 루프, 그리고 좋은 이익과 나쁜 이익의 구분 — 병원 만족도 조사의 실전 설계.">
+    <meta name="keywords" content="환자 만족도 조사, 병원 만족도 설문, NPS, 순추천지수, 환자 피드백, 병원 서비스 개선, 환자 경험 측정, 병원 설문지, 소개율">
+    <meta name="author" content="문석준 — 서울비디치과 대표원장, Patient Funnel 창립자">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://patientfunnel.kr/column/patient-satisfaction-survey.html">
+    <link rel="alternate" hreflang="ko-KR" href="https://patientfunnel.kr/column/patient-satisfaction-survey.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="환자 만족도 조사 — 물어볼 것은 단 하나, 추천하시겠습니까">
+    <meta property="og:description" content="20문항 설문은 아무것도 바꾸지 못한다. 만족은 립서비스, 추천은 평판을 거는 행동 — 0~10점 한 문항의 NPS와 48시간 폐쇄 루프로 병원을 바꾸는 법.">
+    <meta property="og:url" content="https://patientfunnel.kr/column/patient-satisfaction-survey.html">
+    <meta property="og:site_name" content="Patient Funnel">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:image" content="https://patientfunnel.kr/images/og-image.jpg?v=8">
+    <meta property="article:author" content="문석준">
+    <meta property="article:section" content="환자경험">
+    <meta property="article:published_time" content="2026-09-18T09:00:00+09:00">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#F6F3EC">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/column.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "환자 만족도 조사 — 물어볼 것은 단 하나, 추천하시겠습니까",
+          "description": "20문항 설문이 아무것도 바꾸지 못하는 이유 — 만족은 립서비스지만 추천은 평판을 거는 행동이다. 0~10점 한 문항의 NPS, 48시간 폐쇄 루프, 좋은 이익과 나쁜 이익의 구분.",
+          "image": "https://patientfunnel.kr/images/og-image.jpg?v=8",
+          "author": { "@type": "Person", "@id": "https://patientfunnel.kr/#founder", "name": "문석준", "jobTitle": "서울비디치과 대표원장 · Patient Funnel 창립자" },
+          "publisher": { "@id": "https://patientfunnel.kr/#organization" },
+          "datePublished": "2026-09-18T09:00:00+09:00",
+          "dateModified": "2026-09-18T09:00:00+09:00",
+          "mainEntityOfPage": "https://patientfunnel.kr/column/patient-satisfaction-survey.html",
+          "inLanguage": "ko-KR",
+          "articleSection": "환자경험",
+          "keywords": "환자 만족도 조사, NPS, 순추천지수, 폐쇄 루프, 소개율, 환자 피드백",
+          "isPartOf": { "@id": "https://patientfunnel.kr/column/#column" },
+          "timeRequired": "PT10M"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://patientfunnel.kr/" },
+            { "@type": "ListItem", "position": 2, "name": "문석준 칼럼", "item": "https://patientfunnel.kr/column/" },
+            { "@type": "ListItem", "position": 3, "name": "환자 만족도 조사", "item": "https://patientfunnel.kr/column/patient-satisfaction-survey.html" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "만족도 설문에서 늘 '만족'이 나오는데 왜 소개는 안 늘어나나요?", "acceptedAnswer": { "@type": "Answer", "text": "'만족하셨나요?'라는 질문 자체가 립서비스를 부르기 때문입니다. 마주 보고 묻는 만족 질문에 '아니오'라고 답하는 환자는 거의 없습니다. 질문을 바꾸십시오 — '이 병원을 가족이나 친구에게 추천하시겠습니까? 0~10점으로.' 만족은 그 자리에서 끝나는 감정이지만, 추천은 자기 평판을 거는 행동입니다. 특히 의료는 지인의 몸을 걸고 하는 추천이라 훨씬 무겁습니다. 9~10점(추천자)만 진짜 팬이고, 7~8점(중립)은 사실상 이탈 후보이며, 0~6점(비추천자)은 나쁜 소문의 발원지입니다. 그래서 '만족'이 나와도 소개가 안 느는 겁니다 — 대부분 7~8점짜리 만족이니까요." } },
+            { "@type": "Question", "name": "점수를 모으고 나서는 무엇을 해야 하나요?", "acceptedAnswer": { "@type": "Answer", "text": "점수 집계보다 중요한 것이 '폐쇄 루프'입니다 — 낮은 점수를 준 환자에게 48시간 안에 책임자(실장 또는 원장)가 직접 연락해 무슨 일이 있었는지 듣고 해결하는 것. 이 전화 한 통이 세 가지를 만듭니다. 문제의 구체적 원인 파악, 나쁜 소문의 차단, 그리고 서비스 회복의 역설 — 문제가 잘 해결된 환자는 문제가 없던 환자보다 더 충성스러워집니다. 점수만 모으고 후속 조치가 없는 조사는 안 하느니만 못합니다. 환자에게 '말해봤자 소용없다'는 학습만 시키기 때문입니다." } },
+            { "@type": "Question", "name": "직원들에게 점수 목표를 주면 되나요?", "acceptedAnswer": { "@type": "Answer", "text": "점수를 목표로 주는 순간 조사는 망가집니다. 굿하트의 법칙 — 측정이 목표가 되면 좋은 측정이기를 멈춥니다. '10점 부탁드려요'라고 점수를 구걸하기 시작하면 데이터는 쓰레기가 되고 환자는 불편해집니다. 점수는 병원 시스템의 성적표로 쓰고, 직원 개인 평가와는 분리하십시오. 직원에게 물을 것은 점수가 아니라 '이번 주 비추천자 전화에서 무엇을 배웠고 무엇을 바꿀 것인가'입니다. 그리고 추천 의향과 함께 실제 소개 신환 비율을 추적하십시오 — 그것이 조작 불가능한 진짜 성장 지표입니다." } }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">본문으로 이동</a>
+
+    <header class="col-header">
+        <div class="col-header__inner">
+            <a href="../" class="col-header__logo"><span class="col-header__logo-dot"></span>Patient Funnel</a>
+            <nav class="col-header__nav" aria-label="주 메뉴">
+                <a href="../">홈</a>
+                <a href="../blog/">블로그</a>
+                <a href="./" class="is-active">칼럼</a>
+                <a href="https://dentalfunnel.liveklass.com/" target="_blank" rel="noopener">무료 웨비나</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="col-article-hero">
+            <div class="container">
+                <nav class="col-breadcrumb" aria-label="브레드크럼">
+                    <a href="../">홈</a> <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    <a href="./">문석준 칼럼</a> <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    <span aria-current="page">환자 만족도 조사</span>
+                </nav>
+                <span class="col-article-hero__tag">No.33 · 환자경험</span>
+                <h1 class="col-article-hero__title">환자 만족도 조사</h1>
+                <p class="col-article-hero__sub">물어볼 것은 단 하나, 추천하시겠습니까 — 만족은 립서비스, 추천은 평판을 거는 행동. NPS 한 문항과 48시간 폐쇄 루프의 설계법.</p>
+                <div class="col-article-hero__meta">
+                    <strong>문석준</strong>
+                    <span class="dot" aria-hidden="true"></span>
+                    <span>서울비디치과 대표원장 · Patient Funnel 창립자</span>
+                    <span class="dot" aria-hidden="true"></span>
+                    <time datetime="2026-09-18">2026. 9. 18</time>
+                    <span class="dot" aria-hidden="true"></span>
+                    <span>10분</span>
+                </div>
+            </div>
+        </section>
+
+        <article class="col-prose">
+            <div class="col-tldr">
+                <p class="col-tldr__label">한 문단 요약</p>
+                <p>20문항짜리 만족도 설문은 서랍에서 잠들고, "만족하셨어요?"라는 질문은 립서비스만 수확한다. 물어야 할 것은 단 하나 — <strong>"이 병원을 가족이나 친구에게 추천하시겠습니까? 0~10점."</strong> 만족은 그 자리에서 끝나는 감정이지만, <strong>추천은 자기 평판을 거는 행동</strong>이다 — 의료에서는 지인의 몸까지 건다. 9~10점만 추천자, 7~8점은 사실상 이탈 후보, 0~6점은 나쁜 소문의 발원지. 점수보다 중요한 것은 <strong>48시간 폐쇄 루프</strong> — 낮은 점수의 환자에게 책임자가 직접 전화해 듣고 해결하는 것. 그리고 이익을 구분하라 — 환자에게 그대로 설명할 수 없는 돈은 <strong>나쁜 이익</strong>이고, 나쁜 이익은 비추천자를 만들어 미래 매출을 갉아먹는다. 진짜 성장 지표는 광고 유입이 아니라 <strong>소개 신환 비율</strong>이다.</p>
+            </div>
+
+            <p>병원 대기실에서 종종 보는 물건이 있습니다. 20문항짜리 만족도 설문지. 시설 청결도, 직원 친절도, 대기 시간, 5점 척도. 원장님께 여쭤봅니다. "그 설문 결과로 지난 1년간 무엇을 바꾸셨습니까?" 침묵. 그 설문지의 운명은 대부분 같습니다 — 집계되고, 평균 4.2점이 나오고, 서랍에 들어갑니다. 문항이 부족해서가 아닙니다. <strong>질문이 잘못됐기 때문입니다.</strong></p>
+
+            <p>"만족하셨나요?"라는 질문에는 구조적 결함이 있습니다. 치료를 마치고 데스크 앞에 선 환자가, 방금 자기 입을 치료한 사람들 앞에서 "아니요"라고 답할 수 있을까요. 만족 질문은 예의를 수확합니다. 그래서 만족도는 늘 높은데 소개는 안 늘고, 재예약은 빠지는 기이한 병원이 생기는 겁니다.</p>
+
+            <h2>궁극의 질문 — 추천은 평판을 거는 행동이다</h2>
+
+            <p>수십 개 산업의 고객 데이터를 분석한 연구자들이 도달한 결론은 허무할 만큼 단순합니다. 기업의 성장을 예측하는 질문은 단 하나였습니다. <strong>"이 회사를 친구나 동료에게 추천하시겠습니까? 0~10점으로 답해 주십시오."</strong> 왜 이 질문만 작동하는가. 만족은 감정이고 그 자리에서 끝나지만, <mark>추천은 자기 평판을 담보로 거는 행동</mark>이기 때문입니다. 내가 추천한 식당이 별로면 나는 "미안, 예전엔 괜찮았는데"로 넘어갈 수 있습니다. 그런데 내가 추천한 병원에서 지인의 치료가 잘못되면? <strong>의료의 추천은 지인의 몸을 거는 일입니다.</strong> 그래서 환자의 추천 의향은 어떤 만족도 문항보다 무겁고 정직합니다.</p>
+
+            <p>채점 방식이 핵심입니다. <strong>9~10점만 '추천자'입니다.</strong> 실제로 지인을 데려올 팬. <strong>7~8점은 '중립'</strong> — "괜찮았어요"라고 말하지만 더 싼 이벤트가 뜨면 옮겨가는, 사실상의 이탈 후보입니다. 8점을 후하게 해석하고 싶겠지만 참으십시오. <strong>0~6점은 '비추천자'</strong> — 침묵하거나, 최악의 경우 나쁜 소문의 발원지가 됩니다. 지표는 추천자 비율에서 비추천자 비율을 뺀 값 하나로 봅니다. 이 채점법이 설명해주는 미스터리가 있습니다 — "우리 만족도는 높은데 왜 소개가 없지?" 답: 당신의 병원은 7~8점짜리 만족을 대량 생산하고 있는 겁니다. <mark>'대체로 괜찮음'은 아무도 이야기하지 않습니다.</mark></p>
+
+            <h2>점수는 시작이다 — 48시간 폐쇄 루프</h2>
+
+            <p>여기서 대부분의 병원이 멈춥니다. 점수를 모으고, 월별 그래프를 그리고, 끝. 하지만 이 시스템의 심장은 점수가 아니라 <strong>폐쇄 루프(closed loop)</strong>입니다 — 낮은 점수를 준 환자에게 <strong>48시간 안에</strong> 책임자(실장, 사안에 따라 원장)가 직접 연락해서, 무슨 일이 있었는지 듣고, 해결하는 것.</p>
+
+            <p>이 전화 한 통이 세 가지를 만듭니다. 첫째, <strong>문제의 실명(實名)</strong> — "대기가 길었다"가 아니라 "수술 후 주의사항을 아무도 설명해주지 않아 불안했다"는 구체적 원인이 나옵니다. 설문 20문항이 못 잡는 것을 대화 5분이 잡습니다. 둘째, <strong>소문의 차단</strong> — 비추천자의 불만은 방치하면 지인 열 명에게 퍼지지만, 들어주는 순간 확산이 멈춥니다. 셋째, <strong>서비스 회복의 역설</strong> — 문제를 겪고 그것이 훌륭하게 해결된 환자는, 문제를 아예 겪지 않은 환자보다 더 충성스러워집니다. 반대로 경고 하나 — 점수만 모으고 후속 조치가 없는 조사는 안 하느니만 못합니다. 환자에게 "말해봤자 바뀌는 게 없다"는 학습만 시키고, 다음부터는 조용히 떠나게 만드니까요.</p>
+
+            <blockquote class="col-pull">
+                만족은 그 자리에서 끝나는 감정이고, 추천은 자기 평판을 거는 행동이다 — 의료에서는 지인의 몸까지 건다.
+            </blockquote>
+
+            <h2>좋은 이익과 나쁜 이익</h2>
+
+            <p>이 시스템의 바탕에는 회계장부가 구분해주지 않는 구분이 하나 있습니다. <strong>좋은 이익과 나쁜 이익.</strong> 좋은 이익은 환자의 문제를 해결해주고 받는 돈입니다. 나쁜 이익은 환자의 무지, 다급함, 정보 비대칭에서 짜내는 돈입니다 — 필요보다 부풀린 치료계획, 설명 없이 끼워 넣은 항목, 신환 이벤트가가 십 년 다닌 기존 환자의 정가보다 싼 가격표. 판별법은 간단합니다. <mark>그 돈의 구조를 환자에게 그대로 설명할 수 있는가.</mark> 설명할 수 없다면 나쁜 이익입니다.</p>
+
+            <p>나쁜 이익의 문제는 도덕이 아니라 산수입니다. 나쁜 이익은 이번 분기 매출을 올리는 대신 비추천자를 생산합니다. 그리고 비추천자는 조용히, 꾸준히, 미래의 신환을 차단합니다. 단골보다 뜨내기가 우대받는 병원에서 단골은 팬이 되기를 멈춥니다. 반대로 추천자가 데려오는 소개 신환은 광고비 0원에, 신뢰를 장착하고 오고, 상담 동의율이 높고, 또 다른 추천자가 될 확률이 가장 높습니다. 그래서 제가 원장님들께 권하는 진짜 성장 지표는 광고 유입 수가 아니라 <strong>전체 신환 중 소개 신환의 비율</strong>입니다. 이 숫자는 조작이 안 됩니다.</p>
+
+            <div class="col-box">
+                <p class="col-box__label"><i class="fas fa-vial" aria-hidden="true"></i> 만족도 조사 실전 점검</p>
+                <p>우리 병원의 피드백 시스템을 점검해 보십시오.</p>
+                <ul>
+                    <li>"추천하시겠습니까 0~10점" 한 문항이 정기적으로(치료 완료 시점 등) 나가고 있는가</li>
+                    <li>9~10점만 추천자로 세고, 7~8점을 '만족'으로 착각하지 않는가</li>
+                    <li>낮은 점수의 환자에게 48시간 내 책임자가 직접 연락하는 폐쇄 루프가 있는가</li>
+                    <li>점수가 직원 개인 평가와 분리되어 있는가(점수 구걸이 시작되지 않았는가)</li>
+                    <li>전체 신환 중 소개 신환 비율을 월 단위로 추적하고 있는가</li>
+                </ul>
+            </div>
+
+            <h2>점수를 목표로 주는 순간 조사는 죽는다</h2>
+
+            <p>마지막 경고입니다. 이 점수를 직원 인센티브에 연동하고 싶은 유혹이 올 겁니다. 참으십시오. <strong>측정이 목표가 되는 순간, 좋은 측정이기를 멈춥니다.</strong> 자동차 영업점에서 "10점 안 주시면 제가 불이익을 받아요"라는 부탁을 받아보셨을 겁니다 — 그 순간 그 회사의 데이터는 전부 쓰레기가 됐습니다. 병원에서 점수 구걸이 시작되면 데이터만 죽는 게 아니라 환자 경험 자체가 나빠집니다.</p>
+
+            <p>점수는 병원 <strong>시스템</strong>의 성적표로 쓰고, 개인 평가와 분리하십시오. 회의에서 물을 것은 "이번 주 점수 몇 점이야?"가 아니라 <strong>"이번 주 비추천자 전화에서 무엇을 배웠고, 무엇을 바꿀 것인가?"</strong>입니다. 직원용 버전도 강력합니다 — "이 병원을 일할 곳으로 지인에게 추천하겠는가?" 환자 점수가 낮은 병원은 거의 예외 없이 직원 점수가 먼저 낮습니다. 추천받지 못하는 일터에서 추천받는 진료가 나오기는 어렵습니다.</p>
+
+            <hr class="col-divider">
+
+            <p>정리하겠습니다. 20문항을 버리고 한 문항을 남기십시오. 이번 주에 하나만 하십시오 — 치료를 완료한 환자에게 "가족이나 친구에게 추천하시겠습니까, 0~10점" 문자 한 통을 보내고, 6점 이하 응답자에게 48시간 안에 실장이 전화하는 것. 설문지가 아니라 루프를 만드는 겁니다. 병원의 미래는 만족한 환자의 수가 아니라, <strong>자기 평판을 걸고 당신을 추천하는 환자의 수</strong>에 달려 있습니다.</p>
+        </article>
+
+        <section class="col-faq" aria-label="자주 묻는 질문">
+            <h2 class="col-faq__title">자주 묻는 질문</h2>
+            <details>
+                <summary>만족도 설문에서 늘 '만족'이 나오는데 왜 소개는 안 늘어나나요?</summary>
+                <p>만족 질문은 립서비스를 수확하기 때문입니다. "추천하시겠습니까 0~10점"으로 바꾸십시오. 9~10점만 진짜 팬이고 7~8점은 이탈 후보입니다. 만족도가 높은데 소개가 없다면, 병원이 7~8점짜리 '대체로 괜찮음'을 대량 생산하고 있는 겁니다 — 그리고 대체로 괜찮음은 아무도 이야기하지 않습니다.</p>
+            </details>
+            <details>
+                <summary>점수를 모으고 나서는 무엇을 해야 하나요?</summary>
+                <p>폐쇄 루프입니다 — 낮은 점수의 환자에게 48시간 안에 책임자가 직접 전화해 듣고 해결하는 것. 구체적 원인 파악, 나쁜 소문 차단, 그리고 서비스 회복의 역설(잘 해결된 환자는 더 충성스러워짐)까지 얻습니다. 후속 조치 없는 조사는 안 하느니만 못합니다.</p>
+            </details>
+            <details>
+                <summary>직원들에게 점수 목표를 주면 되나요?</summary>
+                <p>안 됩니다. 측정이 목표가 되면 좋은 측정이기를 멈춥니다(굿하트의 법칙). 점수 구걸이 시작되면 데이터도 환자 경험도 망가집니다. 점수는 시스템 성적표로 쓰고 개인 평가와 분리하며, 회의에서는 "비추천자에게 무엇을 배웠는가"를 물으십시오. 조작 불가능한 지표는 소개 신환 비율입니다.</p>
+            </details>
+        </section>
+
+        <aside class="col-author">
+            <div class="col-author__badge" aria-hidden="true">文</div>
+            <div>
+                <p class="col-author__name">문석준</p>
+                <p class="col-author__role">서울비디치과 대표원장 · Patient Funnel 창립자</p>
+                <p class="col-author__bio">서울대학교 치의학과·치의학대학원 졸업, 통합치의학과 전문의. 병원을 직접 운영하며 만든 '페이션트 퍼널' 시스템으로 6,000명 이상의 대표원장들과 병원 경영을 공부하고 있습니다. "필요한 진료를 받지 못하는 사람이 없도록 하자"가 이 모든 일의 이유입니다.</p>
+            </div>
+        </aside>
+
+        <nav class="col-nav" aria-label="이전/다음 글">
+            <a href="new-patient-retention.html">
+                <span class="lbl">이전 글</span>
+                <span class="ttl">신환 이탈 방지 — 승부는 첫 내원이 아니라 첫 100일에서 갈린다</span>
+            </a>
+            <a href="patient-experience-moments.html">
+                <span class="lbl">다음 글</span>
+                <span class="ttl">환자 경험 만들기 — 환자는 병원을 평균이 아니라 절정과 마지막으로 기억한다</span>
+            </a>
+        </nav>
+
+        <section class="col-cta">
+            <div class="col-cta__inner">
+                <h2 class="col-cta__title">추천받는 병원의 시스템을 만드십시오</h2>
+                <p class="col-cta__desc">측정·회복·소개를 하나의 루프로 잇는 법 — 페이션트 퍼널 무료 웨비나에서 공개합니다.</p>
+                <a href="https://dentalfunnel.liveklass.com/" target="_blank" rel="noopener" class="col-cta__btn">무료 웨비나 신청하기 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="col-footer">
+        <div class="container">
+            <div class="col-footer__links">
+                <a href="../">홈</a>
+                <a href="../blog/">블로그</a>
+                <a href="./">칼럼</a>
+                <a href="../terms/">이용약관</a>
+                <a href="../privacy/">개인정보처리방침</a>
+                <a href="../refund/">환불규정</a>
+            </div>
+            <div class="col-footer__biz">
+                <p><strong>상호:</strong> 페이션트퍼널 | <strong>대표:</strong> 문석준</p>
+                <p><strong>사업자등록번호:</strong> 469-01-03014 | <strong>통신판매업신고:</strong> 제2024-서울강남-03817호</p>
+                <p><strong>주소:</strong> 서울특별시 강남구 영동대로 602, 6층 z208 (삼성동, 삼성동 미켈란 107)</p>
+                <p><strong>연락처:</strong> 010-5832-3372 | <strong>이메일:</strong> sodanstjrwns@naver.com | <strong>호스팅:</strong> Cloudflare, Inc.</p>
+                <p>© 2026 Patient Funnel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

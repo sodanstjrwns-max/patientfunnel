@@ -109,6 +109,16 @@
 - [환자 만족도 조사](https://patientfunnel.kr/column/patient-satisfaction-survey.html): 물어볼 것은 단 하나, 추천하시겠습니까 — NPS 한 문항, 추천자·중립자·비판자, 48시간 폐쇄 루프 (2026-09-18 발행)
 - [환자 경험 만들기](https://patientfunnel.kr/column/patient-experience-moments.html): 환자는 평균이 아니라 절정과 마지막으로 기억 — 순간의 4재료, 치료 완료일을 졸업식으로 (2026-09-19 발행)
 - [병원 입소문 만들기](https://patientfunnel.kr/column/hospital-word-of-mouth.html): 광고는 언급할 것이 없는 병원이 내는 세금 — 토크 트리거 4기준·5유형, 언급률 10%와 운영 부담 25% 룰 (2026-09-20 발행)
+- [병원 채용공고 작성](https://patientfunnel.kr/column/hospital-job-posting.html): 남들 쓰는 공고를 그대로 쓰면 남들 같은 사람이 온다 — 스코어카드(존재 이유·결과·역량), 힘든 것까지 쓰기, 상시 소싱 파이프라인 (2026-09-21 발행)
+- [병원 면접 질문](https://patientfunnel.kr/column/hospital-interview-questions.html): 한 직장의 이야기는 꾸밀 수 있어도 다섯 직장의 패턴은 꾸밀 수 없다 — 첫 10초의 함정, 예측력 순위표(워크샘플 29%·경력 연차 3%), 구조화 면접과 10분 워크샘플 (2026-09-22 발행)
+- [병원 인센티브 제도](https://patientfunnel.kr/column/hospital-incentive-system.html): 동의율에 인센티브를 걸면 동의율 말고 다른 것도 오른다 — 보상은 시야를 좁힌다(촛불 문제), 유령계좌 200만 개, if-then을 now-that으로 (2026-09-23 발행)
+- [병원 급여 체계](https://patientfunnel.kr/column/hospital-salary-structure.html): 연봉을 올려줬는데도 나가는 이유는 연봉이 아니다 — 갤럽 Q12에 연봉 문항이 없는 이유, 팀 단위로 갈리는 몰입, 전문가 트랙과 기록되는 면담 (2026-09-24 발행)
+- [병원 블로그 심의](https://patientfunnel.kr/column/hospital-blog-review.html): 심의에 걸리는 글과 안 걸리는 글의 차이는 표현이 아니라 목적이다 — 정보가 광고로 바뀌는 세 신호(병원 식별·내원 유도·시술 권유), 심의와 무관하게 금지되는 표현, 정보 글과 병원 글의 분리 (2026-09-25 발행)
+- [병원 리뷰 관리](https://patientfunnel.kr/column/hospital-review-management.html): 별점 4.2가 5.0보다 환자를 더 데려오는 이유 — 부정 리뷰를 먼저 읽는 환자, 삭제 대신 응답의 3원칙, 정직한 분포, 악성 리뷰의 상류는 경험 (2026-09-26 발행)
+- [병원 리뷰 이벤트](https://patientfunnel.kr/column/hospital-review-event.html): 대가를 거는 순간 후기는 유인이 되고, 요청을 설계하면 후기는 쌓인다 — 리뷰 이벤트가 유인·기만·경험담 광고에 걸리는 구조, 헌혈 사례금 효과, 순간·허락·길·응답 4단계 (2026-09-27 발행)
+- [병원 광고비 적정선](https://patientfunnel.kr/column/hospital-ad-budget.html): 예산은 매출의 몇 퍼센트가 아니라 두 숫자(CPA·ACV)에서 나온다 — 계기판 없는 비행, 머스트 해브 관문(재방문율·소개율), 유지율 5%→수익 25~95% (2026-09-28 발행)
+- [병원 홈페이지 만들기](https://patientfunnel.kr/column/hospital-homepage.html): 광고비의 절반은 클릭 이후에 증발한다 — 타조 마케팅, 환자가 반드시 검색하는 Big 5, 완벽한 비용 페이지 5문, 동전의 법칙(단점 선공개), 랜딩 영상·80% 영상·셀프서비스·원장의 얼굴 (2026-09-29 발행)
+- [병원 직원 교육](https://patientfunnel.kr/column/staff-initiative.html): 시키는 것만 하는 직원은 원래 그런 사람이 아니라 그렇게 되어버린 사람이다 — 유형 I/X는 환경이 만든다, 자율의 네 눈금(과제·시간·기법·팀), 골디락스 난이도, 자기 일의 끝을 보게 하기 (2026-09-30 발행)
 
 ## 핵심 용어 정의 (Glossary — 전체: https://patientfunnel.kr/blog/glossary.html)
 

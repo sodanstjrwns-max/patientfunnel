@@ -18,7 +18,7 @@ Components: Aurora Mesh Gradient, Liquid Glass v2, Kinetic Typography,
 Software: Inter, Noto Sans KR, Pretendard, Chart.js, Font Awesome
 
 /* CONTACT */
-Email: contact@patientfunnel.kr
+Email: patientsfunnel@gmail.com
 KakaoTalk: https://pf.kakao.com/_xkxnMn
 YouTube: https://www.youtube.com/channel/UCv5HqXYWzG874tgaOBpJMVw
 

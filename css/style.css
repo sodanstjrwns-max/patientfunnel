@@ -1666,3 +1666,12 @@ code, kbd { font-family: var(--f-mono); font-size: 0.9em; }
     .stage-counter__progress, .floating-cta a, .avatar, .marquee__track, .specialty-marquee__track { animation: none !important; }
     .hero__bento, .proof-bento, .stages-grid { perspective: none; }
 }
+
+/* 서비스 섹션 → Patient Hub 요금·구독 경로 (토스 심사: 대표 홈페이지에서 결제 페이지까지 연결) */
+.svc-showcase__link { color: var(--gold-light, #e0b756); text-decoration: underline; text-underline-offset: 3px; }
+.svc-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; margin: 2rem auto 0; padding: 1.25rem 1.5rem; border: 1px solid rgba(224,183,86,0.28); border-radius: 18px; background: linear-gradient(135deg, rgba(224,183,86,0.10), rgba(224,183,86,0.03)); }
+.svc-cta__text { display: flex; flex-direction: column; gap: 0.35rem; max-width: 640px; }
+.svc-cta__text strong { font-size: 1.05rem; }
+.svc-cta__text span { font-size: 0.85rem; opacity: 0.8; line-height: 1.55; }
+@media (max-width: 640px) { .svc-cta { justify-content: center; text-align: center; } .svc-cta .btn { width: 100%; justify-content: center; } }
+

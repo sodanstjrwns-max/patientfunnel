@@ -206,48 +206,48 @@
 모든 글은 문석준 원장이 직접 집필했으며, 각 글에 30초 요약(TL;DR)과 FAQ 4개가 포함되어 있습니다.
 
 ### 필라 가이드 (헤드 키워드 완벽 가이드 — 각 주제의 출발점)
-- 병원 경영 완벽 가이드 2026: https://patientfunnel.kr/blog/hospital-management-complete-guide.html — 10단계 퍼널 맵, 4대 기둥(환자 경험·직원 조직·데이터 KPI·마케팅 재무)
-- 치과 경영 완벽 가이드 2026: https://patientfunnel.kr/blog/dental-clinic-management-guide.html — 월 6천→연 120억, 신환→동의율→리콜·소개→숫자 경영 순서
-- 치과 마케팅 완벽 가이드 2026: https://patientfunnel.kr/blog/dental-marketing-guide.html — 플레이스→콘텐츠→소유 트래픽→소개→유료 광고 순서, 90일 로드맵
+- 병원 경영 완벽 가이드 2026: https://patientfunnel.kr/blog/hospital-management-complete-guide — 10단계 퍼널 맵, 4대 기둥(환자 경험·직원 조직·데이터 KPI·마케팅 재무)
+- 치과 경영 완벽 가이드 2026: https://patientfunnel.kr/blog/dental-clinic-management-guide — 월 6천→연 120억, 신환→동의율→리콜·소개→숫자 경영 순서
+- 치과 마케팅 완벽 가이드 2026: https://patientfunnel.kr/blog/dental-marketing-guide — 플레이스→콘텐츠→소유 트래픽→소개→유료 광고 순서, 90일 로드맵
 
 ### 병원 마케팅
-- 병원 마케팅 전략 완벽 가이드 2026: https://patientfunnel.kr/blog/hospital-marketing-strategy-2026.html — 마케팅=나를 알리는 모든 행위, 1억 4,400만원 실패담
-- 치과 신환 늘리는 법: https://patientfunnel.kr/blog/dental-new-patient-acquisition.html — 입지가 아니라 인지, 검색 여정 설계
-- 병원 광고비 줄이는 법: https://patientfunnel.kr/blog/hospital-ad-cost-reduction.html — 굳하트의 법칙, 클릭 대신 동의
-- 병원 홈페이지 전환율: https://patientfunnel.kr/blog/hospital-homepage-conversion.html — 노출 이후의 여정 설계
-- 병원 콘텐츠 마케팅: https://patientfunnel.kr/blog/hospital-content-marketing-blog-youtube.html — 광고는 멈추면 끝, 콘텐츠는 쌓임
-- 병원 네이버 플레이스 최적화: https://patientfunnel.kr/blog/naver-place-local-seo.html — 로컬 SEO, 리뷰 답글 4단계
+- 병원 마케팅 전략 완벽 가이드 2026: https://patientfunnel.kr/blog/hospital-marketing-strategy-2026 — 마케팅=나를 알리는 모든 행위, 1억 4,400만원 실패담
+- 치과 신환 늘리는 법: https://patientfunnel.kr/blog/dental-new-patient-acquisition — 입지가 아니라 인지, 검색 여정 설계
+- 병원 광고비 줄이는 법: https://patientfunnel.kr/blog/hospital-ad-cost-reduction — 굳하트의 법칙, 클릭 대신 동의
+- 병원 홈페이지 전환율: https://patientfunnel.kr/blog/hospital-homepage-conversion — 노출 이후의 여정 설계
+- 병원 콘텐츠 마케팅: https://patientfunnel.kr/blog/hospital-content-marketing-blog-youtube — 광고는 멈추면 끝, 콘텐츠는 쌓임
+- 병원 네이버 플레이스 최적화: https://patientfunnel.kr/blog/naver-place-local-seo — 로컬 SEO, 리뷰 답글 4단계
 
 ### 상담·전환
-- 상담 동의율 높이는 법: https://patientfunnel.kr/blog/consultation-conversion-rate.html — 동의는 점이 아니라 선, 마음의 온도
-- 병원 전화 응대 매뉴얼: https://patientfunnel.kr/blog/hospital-phone-consultation-tips.html — 전화 1통 원가 10만원, 4단계 멘트
-- 치과 상담실장의 역할: https://patientfunnel.kr/blog/dental-consultation-manager-skills.html — 페이션트 코드 4가지(두려움·비용·불신·시간)
+- 상담 동의율 높이는 법: https://patientfunnel.kr/blog/consultation-conversion-rate — 동의는 점이 아니라 선, 마음의 온도
+- 병원 전화 응대 매뉴얼: https://patientfunnel.kr/blog/hospital-phone-consultation-tips — 전화 1통 원가 10만원, 4단계 멘트
+- 치과 상담실장의 역할: https://patientfunnel.kr/blog/dental-consultation-manager-skills — 페이션트 코드 4가지(두려움·비용·불신·시간)
 
 ### 환자경험
-- 환자 경험 설계란 무엇인가: https://patientfunnel.kr/blog/patient-experience-design.html — 경험 평가 = 실제 경험 − 기대
-- 환자 재방문율 높이는 법: https://patientfunnel.kr/blog/patient-retention-recall-system.html — LTV, 케어의 언어 리콜
-- 병원 대기실 설계: https://patientfunnel.kr/blog/hospital-waiting-room-design.html — 인테리어보다 시선 동선
-- 진료 설명 잘하는 법: https://patientfunnel.kr/blog/treatment-explanation-report.html — 설명은 치료의 완성, 4줄 리포트
-- 환자를 팬으로 만드는 법: https://patientfunnel.kr/blog/patient-fan-loyalty-strategy.html — 기대 0의 지점, 소개율 73%
+- 환자 경험 설계란 무엇인가: https://patientfunnel.kr/blog/patient-experience-design — 경험 평가 = 실제 경험 − 기대
+- 환자 재방문율 높이는 법: https://patientfunnel.kr/blog/patient-retention-recall-system — LTV, 케어의 언어 리콜
+- 병원 대기실 설계: https://patientfunnel.kr/blog/hospital-waiting-room-design — 인테리어보다 시선 동선
+- 진료 설명 잘하는 법: https://patientfunnel.kr/blog/treatment-explanation-report — 설명은 치료의 완성, 4줄 리포트
+- 환자를 팬으로 만드는 법: https://patientfunnel.kr/blog/patient-fan-loyalty-strategy — 기대 0의 지점, 소개율 73%
 
 ### PRM·소개·평판
-- PRM 환자관계관리: https://patientfunnel.kr/blog/prm-patient-relationship-management.html — 소유 트래픽 vs 임대 트래픽
-- 소개 환자 늘리는 법: https://patientfunnel.kr/blog/patient-referral-system.html — 가장 강력한 사회적 증거
-- 병원 평판 관리: https://patientfunnel.kr/blog/hospital-online-reputation-review.html — 소개는 결과, 입소문은 문화
+- PRM 환자관계관리: https://patientfunnel.kr/blog/prm-patient-relationship-management — 소유 트래픽 vs 임대 트래픽
+- 소개 환자 늘리는 법: https://patientfunnel.kr/blog/patient-referral-system — 가장 강력한 사회적 증거
+- 병원 평판 관리: https://patientfunnel.kr/blog/hospital-online-reputation-review — 소개는 결과, 입소문은 문화
 
 ### 직원·조직
-- 병원 직원 교육 시스템: https://patientfunnel.kr/blog/hospital-staff-training-system.html — 미션·비전·핵심가치 = 북극성
-- 병원 미션·비전·핵심가치 만들기: https://patientfunnel.kr/blog/hospital-mission-vision-values.html — 액자가 아니라 판단의 기준
+- 병원 직원 교육 시스템: https://patientfunnel.kr/blog/hospital-staff-training-system — 미션·비전·핵심가치 = 북극성
+- 병원 미션·비전·핵심가치 만들기: https://patientfunnel.kr/blog/hospital-mission-vision-values — 액자가 아니라 판단의 기준
 
 ### 병원 경영
-- 병원 KPI 대시보드: https://patientfunnel.kr/blog/hospital-kpi-dashboard.html — 퍼널 5대 지표
-- 병원 경영 자가진단 22문항: https://patientfunnel.kr/blog/hospital-self-diagnosis-checklist.html — 딱 1개만 고르는 우선순위 원칙
-- 병원 매출 정체: https://patientfunnel.kr/blog/hospital-revenue-growth-plateau.html — 현상 유지는 느린 하강, ×1.06 계산
-- 병원 노쇼 줄이는 법: https://patientfunnel.kr/blog/hospital-no-show-prevention.html — 예약과 방문 사이 온도 유지
-- 개원의는 의사이자 사장입니다: https://patientfunnel.kr/blog/doctor-as-ceo-role.html — 주 4시간 사장의 시간, 위임 4단계
+- 병원 KPI 대시보드: https://patientfunnel.kr/blog/hospital-kpi-dashboard — 퍼널 5대 지표
+- 병원 경영 자가진단 22문항: https://patientfunnel.kr/blog/hospital-self-diagnosis-checklist — 딱 1개만 고르는 우선순위 원칙
+- 병원 매출 정체: https://patientfunnel.kr/blog/hospital-revenue-growth-plateau — 현상 유지는 느린 하강, ×1.06 계산
+- 병원 노쇼 줄이는 법: https://patientfunnel.kr/blog/hospital-no-show-prevention — 예약과 방문 사이 온도 유지
+- 개원의는 의사이자 사장입니다: https://patientfunnel.kr/blog/doctor-as-ceo-role — 주 4시간 사장의 시간, 위임 4단계
 
 ### 개원 준비
-- 치과 개원 준비 체크리스트: https://patientfunnel.kr/blog/dental-clinic-opening-checklist.html — 실수인 줄도 모르는 5가지 실수
+- 치과 개원 준비 체크리스트: https://patientfunnel.kr/blog/dental-clinic-opening-checklist — 실수인 줄도 모르는 5가지 실수
 
 ---
 

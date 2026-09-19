@@ -17,7 +17,7 @@ Sitemap: https://patientfunnel.kr/sitemap-images.xml
 #   /llms-full.txt         — Full markdown content for citation
 #   /humans.txt            — Human-readable credits
 #   /feed.xml              — RSS 2.0 feed (blog, 25 articles)
-#   /blog/glossary.html    — Glossary of 16 core hospital-management terms (DefinedTermSet)
+#   /blog/glossary         — Glossary of 16 core hospital-management terms (DefinedTermSet)
 
 # ============================================================
 # Default: Allow all

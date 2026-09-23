@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>환자 선택 설계 — 환자의 선택은 설계된다, 기본값의 힘 | 문석준 칼럼</title>
+    <meta name="description" content="&quot;설명은 충분히 했는데 환자가 결정을 안 해요.&quot; 처방은 더 긴 설명이 아니다. 환자가 미루는 것은 설명이 부족해서가 아니라 인간이라서다 — 인간은 기본값에 머물고, 옵션이 많으면 보류하고, 자신의 미래 실행력을 과신한다. 장기기증 동의율을 12%와 99%로 가른 서식 하나의 힘, &quot;가예약을 잡아두고 어려우시면 취소만 주세요&quot;라는 기본값, 2~3개로 줄인 옵션, 노쇼보다 쉬운 예약 변경, 실수를 예상하는 3중 안전망, 그리고 넛지와 조작을 가르는 세 가지 질문.">
+    <meta name="keywords" content="환자 선택 설계, 병원 넛지, 치과 상담 동의율, 환자 결정 미루기, 다음 예약 기본값, 병원 예약 시스템 설계, 상담 옵션 제시, 리콜 재방문율, 노쇼 예약 변경, 행동경제학 병원">
+    <meta name="author" content="문석준 — 서울비디치과 대표원장, Patient Funnel 창립자">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://patientfunnel.kr/column/patient-nudge">
+    <link rel="alternate" hreflang="ko-KR" href="https://patientfunnel.kr/column/patient-nudge">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="환자 선택 설계 — 환자의 선택은 설계된다, 기본값의 힘">
+    <meta property="og:description" content="환자가 미루는 것은 설명이 부족해서가 아니라 인간이라서다. 기본값·옵션 축소·마찰·오류 관용, 그리고 넛지와 조작을 가르는 세 질문.">
+    <meta property="og:url" content="https://patientfunnel.kr/column/patient-nudge">
+    <meta property="og:site_name" content="Patient Funnel">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:image" content="https://patientfunnel.kr/images/og-image.jpg?v=8">
+    <meta property="article:author" content="문석준">
+    <meta property="article:section" content="환자경험">
+    <meta property="article:published_time" content="2026-10-26T09:00:00+09:00">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#F6F3EC">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/column.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "환자 선택 설계 — 환자의 선택은 설계된다, 기본값의 힘",
+          "description": "환자가 미루는 것은 설명이 부족해서가 아니라 인간이라서다. 기본값·옵션 축소·마찰·오류 관용, 그리고 넛지와 조작을 가르는 세 질문.",
+          "image": "https://patientfunnel.kr/images/og-image.jpg?v=8",
+          "author": { "@type": "Person", "@id": "https://patientfunnel.kr/#founder", "name": "문석준", "jobTitle": "서울비디치과 대표원장 · Patient Funnel 창립자" },
+          "publisher": { "@id": "https://patientfunnel.kr/#organization" },
+          "datePublished": "2026-10-26T09:00:00+09:00",
+          "dateModified": "2026-10-26T09:00:00+09:00",
+          "mainEntityOfPage": "https://patientfunnel.kr/column/patient-nudge",
+          "inLanguage": "ko-KR",
+          "articleSection": "환자경험",
+          "keywords": "선택 설계, 넛지, 기본값, 선택 과부하, 마찰, 오류 관용",
+          "isPartOf": { "@id": "https://patientfunnel.kr/column/#column" },
+          "timeRequired": "PT10M"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://patientfunnel.kr/" },
+            { "@type": "ListItem", "position": 2, "name": "문석준 칼럼", "item": "https://patientfunnel.kr/column/" },
+            { "@type": "ListItem", "position": 3, "name": "환자 선택 설계", "item": "https://patientfunnel.kr/column/patient-nudge" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "환자를 유도하는 것이 조작 아닌가요?", "acceptedAnswer": {"@type": "Answer", "text": "중립적인 선택 설계는 존재하지 않는다는 것이 이 책의 출발점입니다. 안내문의 문구, 옵션의 순서, 다음 예약의 기본값은 이미 매 순간 환자의 선택에 영향을 주고 있습니다. 남은 선택지는 영향을 줄지 말지가 아니라 무의식적으로 줄지 의식적으로 좋은 방향으로 줄지입니다. 경계는 세 질문으로 긋습니다 — 환자 이익이 기준인가, 환자에게 그대로 설명해도 부끄럽지 않은가, 거절과 취소가 진입만큼 쉬운가. 하나라도 아니오라면 넛지가 아니라 조작이므로 하지 않는 것이 맞습니다."}},
+            {"@type": "Question", "name": "다음 예약을 기본으로 잡아두면 환자가 불편해하지 않나요?", "acceptedAnswer": {"@type": "Answer", "text": "취소가 진입만큼 쉬우면 대부분 불편해하지 않습니다. 핵심은 \"생각해 보고 연락 주세요\"와 \"가예약을 잡아두고 어려우시면 취소만 주세요\"가 같은 자유와 같은 선택권을 주면서 아무것도 하지 않았을 때의 도착점만 다르다는 것입니다. 인간은 기본값에 머물고 자신의 미래 실행력을 과대평가하므로, 환자의 \"다음 주에 전화드릴게요\"에 아무것도 걸지 않는 설계가 환자에게도 이롭습니다. 이유를 환자에게 그대로 설명하고, 변경은 답장 한 통으로 끝나게 하고, 도입 전후의 취소·불만 건수를 비교해 확인하십시오."}},
+            {"@type": "Question", "name": "고령 환자가 많은 병원에도 이런 설계가 통하나요?", "acceptedAnswer": {"@type": "Answer", "text": "오히려 더 잘 통합니다. 넛지는 인지 부담을 줄이는 기술이므로 정보 처리가 힘든 환자일수록 효과가 큽니다. 상담 옵션을 두세 개로 줄이는 것, 다음 예약을 병원이 잡아두는 것, 전날과 당일의 이중 리마인드, 아침·점심·저녁 칸이 그려진 약 봉투 같은 오류 관용 설계는 고령 환자에게 가장 먼저 체감됩니다. 그리고 어떤 넛지든 도입 전후 지표를 비교하는 것까지가 한 세트입니다. 측정 없는 넛지는 인테리어일 뿐이라는 것이 이 책의 결론입니다."}}
+          ]
+        }
+      ]
+    }
+    </script>
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNCQCP3K3P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QNCQCP3K3P');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "ydh55o7wbq");
+    </script>
+    <!-- 라이브 신청 클릭 전환 이벤트 -->
+    <script>
+        document.addEventListener('click', function(e){
+            var a = e.target.closest && e.target.closest('a[href*="liveklass"]');
+            if (a && window.gtag) gtag('event', 'live_apply_click', { link_url: a.href, page_path: location.pathname });
+        });
+    </script>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">본문으로 이동</a>
+
+    <header class="col-header">
+        <div class="col-header__inner">
+            <a href="../" class="col-header__logo"><span class="col-header__logo-dot"></span>Patient Funnel</a>
+            <nav class="col-header__nav" aria-label="주 메뉴">
+                <a href="../">홈</a>
+                <a href="../blog/">블로그</a>
+                <a href="./" class="is-active">칼럼</a>
+                <a href="https://dentalfunnel.liveklass.com/" target="_blank" rel="noopener">무료 웨비나</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="col-article-hero">
+            <div class="container">
+                <nav class="col-breadcrumb" aria-label="브레드크럼">
+                    <a href="../">홈</a> <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    <a href="./">문석준 칼럼</a> <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    <span aria-current="page">환자 선택 설계</span>
+                </nav>
+                <span class="col-article-hero__tag">No.71 · 환자경험</span>
+                <h1 class="col-article-hero__title">환자 선택 설계</h1>
+                <p class="col-article-hero__sub">환자의 선택은 설계된다, 기본값의 힘 — 중립적 설계는 없다, 옵션은 줄이고 미래 의지에는 걸지 말 것, 마찰과 실수를 예상하는 설계, 그리고 넛지와 조작을 가르는 세 가지 질문.</p>
+                <div class="col-article-hero__meta">
+                    <strong>문석준</strong>
+                    <span class="dot" aria-hidden="true"></span>
+                    <span>서울비디치과 대표원장 · Patient Funnel 창립자</span>
+                    <span class="dot" aria-hidden="true"></span>
+                    <time datetime="2026-10-26">2026. 10. 26</time>
+                    <span class="dot" aria-hidden="true"></span>
+                    <span>10분</span>
+                </div>
+            </div>
+        </section>
+
+        <article class="col-prose">
+            <div class="col-tldr">
+                <p class="col-tldr__label">한 문단 요약</p>
+                <p>"충분히 설명했는데 환자가 결정을 안 해요"의 처방은 대개 더 긴 설명이다. 그런데 노벨경제학상을 받은 이 책의 저자는 다르게 말한다 — <strong>환자가 치료를 미루는 것은 설명이 부족해서가 아니라 인간이라서다.</strong> 인간은 귀찮으면 아무것도 하지 않고, 기본값에 머문다. 장기기증 동의율이 서식 하나의 차이로 12%와 99%로 갈린 것처럼, 병원의 모든 접점에는 이미 기본값이 있다 — 다만 아무도 설계하지 않았을 뿐. "생각해 보고 연락 주세요"와 <strong>"가예약을 잡아두고 어려우시면 취소만 주세요"</strong>는 같은 자유이지만 다른 도착점이다. 옵션은 2~3개로 줄이고, "다음 주에 전화드릴게요"라는 <strong>환자의 미래 의지에는 아무것도 걸지 말고</strong>, 예약 변경이 노쇼보다 쉬운지 확인하고, 실수를 벌하지 말고 예상하라. 단, <strong>중립적 설계는 없기에</strong> 방향이 전부다 — 환자 이익이 기준인가, 환자에게 그대로 말할 수 있는가, 거절이 진입만큼 쉬운가. 하나라도 아니오면 그것은 넛지가 아니라 조작이다.</p>
+            </div>
+
+            <p>"설명은 충분히 했거든요. 그런데 환자가 결정을 안 해요." 이 말 뒤에 따라오는 처방은 거의 언제나 같습니다 — 설명을 더 길게, 자료를 더 두껍게. 이 처방에는 전제가 하나 있습니다. 환자가 정보를 모두 모아 계산하고 최적을 고르는 사람이라는 전제. 경제학 교과서의 그 사람을 이 책의 저자는 '이콘'이라 부릅니다. 그리고 진료실 의자에 앉은 사람은 이콘이 아니라 '휴먼'입니다. 실수하고, 미루고, 귀찮아하는 보통 사람.</p>
+
+            <p>휴먼은 정보가 많아지면 판단을 미룹니다. 오늘의 통증보다 미래의 위험을 작게 봅니다. 어제 들은 지인의 사례 하나가 통계를 이깁니다. 그리고 무엇보다, 귀찮으면 아무것도 하지 않습니다. 그래서 진단이 뒤집힙니다. <mark>환자가 치료를 미루는 것은 설명이 부족해서가 아니라 인간이라서입니다.</mark> 처방도 뒤집힙니다 — 더 긴 설명이 아니라, 미루기 어렵게 만드는 설계. 저자는 이것을 '선택 설계'라 부르고, 이 연구로 노벨경제학상을 받았습니다.</p>
+
+            <h2>기본값 — 세상에서 가장 조용한 힘</h2>
+
+            <p>이 책의 가장 유명한 데이터는 장기기증입니다. 기증 의사를 '체크해야 등록'되는 나라의 동의율은 10~20%대, '체크해야 거부'되는 나라는 90%를 넘습니다. 문화적으로 거의 같은 두 이웃 나라가 12%와 99%로 갈렸습니다. 국민성의 차이가 아닙니다. 서류의 기본값 하나의 차이입니다. 인간은 기본값에 머뭅니다 — 그것이 추천처럼 느껴지고, 바꾸는 것이 귀찮고, 바꿨다가 후회할 것이 두렵기 때문입니다.</p>
+
+            <p>병원의 기본값을 점검해 보십시오. 진료가 끝나면 다음 예약은 잡히는 것이 기본입니까, 환자가 요청해야 잡힙니까. 검진 안내는 자동으로 갑니까, 환자가 기억해야 합니까. 상담 후 다음 단계는 "생각해 보고 연락 주세요"입니까, "일단 가예약을 잡아두고, 어려우시면 취소만 주세요"입니까. 마지막 예가 핵심입니다. <strong>같은 자유, 같은 선택권 — 그러나 아무것도 하지 않았을 때 도달하는 지점이 다릅니다.</strong> 그리고 대부분의 인간은 아무것도 하지 않습니다. 병원의 모든 접점에는 이미 기본값이 있습니다. 다만 아무도 설계하지 않았을 뿐입니다. 예약을 환자가 능동적으로 고르게 해 약속의 소유감을 만드는 법은 <a href="noshow-prevention">노쇼의 글</a>에서 다뤘습니다 — 기본값은 그 앞에 놓이는 설계입니다.</p>
+
+            <blockquote class="col-pull">환자가 치료를 미루는 것은 설명이 부족해서가 아니라 인간이라서다.</blockquote>
+
+            <h2>옵션은 줄이고, 미래 의지에는 걸지 마라</h2>
+
+            <p>유명한 잼 실험이 있습니다. 매대에 잼 24종을 놓으면 6종을 놓았을 때보다 시식은 늘지만 구매는 10분의 1로 떨어졌습니다. 선택지가 많아지면 비교 비용이 급증하고, 휴먼은 최적 선택 대신 선택 회피를 고릅니다. 성실한 상담일수록 이 실수를 합니다 — 재료별, 브랜드별, 가격대별 매트릭스를 다 펼칩니다. 정보 제공으로는 성실하지만 선택 설계로는 실패입니다. 환자의 머릿속에서 일어나는 일은 "잘 모르겠으니 일단 보류"입니다.</p>
+
+            <p>처방은 <strong>구조화된 축소</strong>입니다. "이 경우 저라면 이 두 가지 중에서 고민하겠습니다. 차이는 이것 하나입니다." 옵션을 줄이는 것은 환자의 권리를 줄이는 것이 아니라 인지 부담을 대신 져 주는 것입니다. 나머지 옵션은 물으면 언제든 꺼낼 수 있게 준비해 두면 됩니다. 설명의 순서와 주인공을 잡는 법은 <a href="treatment-plan-explanation">치료계획 설명의 글</a>에서 다뤘으니, 여기서는 옵션의 개수만 기억하십시오.</p>
+
+            <p>하나 더, <strong>계획 오류</strong>입니다. "다음 주에 전화드릴게요"라고 말한 환자의 대부분은 진심이었고, 대부분 전화하지 않습니다. 의지가 약해서가 아니라 휴먼이라서입니다. 그래서 좋은 선택 설계는 환자의 미래 의지에 아무것도 걸지 않습니다. 실행 시점을 지금으로 당기거나(그 자리 가예약), 실행을 병원 쪽 행동으로 옮깁니다(저희가 수요일에 먼저 연락드리겠습니다). 환자의 계획을 믿지 말고, 환자의 계획 오류를 계획하십시오.</p>
+
+            <h2>마찰을 옮기고, 실수를 예상하라</h2>
+
+            <p>넛지의 실무 엔진은 마찰의 재배치입니다. 원칙은 단순합니다 — <strong>바람직한 행동의 단계 수는 줄이고, 바람직하지 않은 행동의 단계 수는 늘려라.</strong> 환자 여정을 마찰의 눈으로 보십시오. 예약 변경이 전화를 걸어 대기하고 이름을 말하고 날짜를 조율해야 하는 일이라면, 그 마찰이 변경 대신 무단 부도를 만듭니다. 변경이 부도보다 어려우면 안 됩니다. 리콜 문자에서 예약까지 몇 번의 탭이 필요합니까 — "예약하려면 전화 주세요"와 "이 링크에서 10초면 됩니다"의 차이가 재방문의 차이입니다. 반대 방향도 있습니다. 취소 링크 앞에 "취소 사유를 하나만 알려주시겠어요?" 한 단계를 넣는 것만으로 충동적 취소가 줄어듭니다.</p>
+
+            <p>그리고 <strong>실수를 예상하십시오.</strong> 저자가 드는 예는 어느 방향으로 넣어도 작동하는 지하철 카드, 휘발유 차에는 물리적으로 들어가지 않는 경유 노즐, 매일 먹는 습관이 끊기지 않도록 28정 중 7정을 위약으로 넣은 약 포장입니다. 좋은 설계는 사용자를 교육해 실수를 없애려 하지 않고, 실수해도 사고가 나지 않게 만듭니다. 병원 버전은 이렇습니다. 예약을 잊는 환자를 탓하기 전에 전날 리마인드, 당일 아침 확인, 원클릭 변경 링크의 3중 안전망을 기본값으로. 복약 안내를 말로 하는 대신 아침·점심·저녁 칸이 그려진 봉투에. 10회짜리 치료라면 지금 몇 번째인지, 끝나면 무엇이 달라지는지를 매번 알려주는 진행 표시. "환자가 왜 이걸 못 하지?"라는 문장이 나올 때마다, 그것은 환자의 결함이 아니라 설계의 공백입니다.</p>
+
+            <div class="col-box"><p class="col-box__label"><i class="fas fa-vial" aria-hidden="true"></i> 이번 주 실행 — 기본값 감사</p><p>환자 접점을 표로 만들고 '환자가 행동해야 진행되는가, 행동하지 않아도 진행되는가'로 분류해 보십시오.</p><ul><li>진료 종료 멘트를 "다음 예약 잡아드렸습니다, 변경은 답장으로"로 통일한다</li><li>주요 진료 하나의 상담 자료를 '2~3옵션 + 결정적 차이 한 줄'로 다시 만든다</li><li>예약 변경 단계 수와 노쇼 단계 수를 세어 변경이 더 쉬운지 확인하고, 리콜 문자에 예약 링크를 넣는다</li><li>전날·당일 리마인드와 원클릭 변경을 기본값으로 켠다</li><li>바꾼 접점마다 '이전 수치 — 개입 — 이후 수치' 세 칸 기록을 남긴다</li></ul></div>
+
+            <h2>넛지와 조작을 가르는 세 가지 질문</h2>
+
+            <p>여기까지 읽고 불편하신 분이 있을 것입니다. "환자를 유도하는 것 자체가 문제 아닌가." 저자의 답은 이렇습니다 — <strong>중립적인 선택 설계란 존재하지 않는다.</strong> 안내문의 문구, 옵션의 순서, 예약의 기본값. 병원은 이미 매 순간 환자의 선택에 영향을 주고 있습니다. 남은 선택지는 영향을 줄 것인가가 아니라, 무의식적으로 줄 것인가 의식적으로 좋은 방향으로 줄 것인가입니다.</p>
+
+            <p>그래서 방향이 전부입니다. 저자는 이 철학을 '자유주의적 개입주의'라 부릅니다 — 더 나은 선택으로 이끌되, 언제든 다른 선택이 비용 없이 가능해야 한다. 이 조건을 잃는 순간 넛지는 사람을 함정에 빠뜨리는 나쁜 설계, '슬러지'가 됩니다. 해지를 숨긴 구독 서비스가 그것입니다. 의료에서는 이 경계가 더 엄격해야 합니다. 판단 기준은 세 문장입니다. 첫째, <mark>환자의 이익이 기준인가</mark> — 이 설계가 이끄는 선택이 병원 매출이 아니라 환자에게 필요한 진료인가. 둘째, 투명한가 — "가예약을 기본으로 잡아드리는 이유는 미루는 사이 상태가 나빠지는 분들을 자주 봤기 때문입니다"라고 환자에게 그대로 말해도 부끄럽지 않은가. 셋째, 탈출이 쉬운가 — 거절과 취소가 진입만큼 쉬운가. 셋 중 하나라도 아니오라면 그것은 넛지가 아니라 조작이고, 단기 매출과 장기 신뢰를 맞바꾸는 거래입니다. 한 가지 덧붙이면, "예약 부도가 너무 많습니다"라는 안내문은 부도가 정상이라는 신호가 되어 부도를 늘립니다. 바람직한 행동의 보편성을 보여주십시오 — 문제 행동의 보편성이 아니라.</p>
+
+            <hr class="col-divider">
+
+            <p>정리하겠습니다. 환자는 이콘이 아니라 휴먼이고, 휴먼은 기본값에 머물며, 옵션이 많으면 보류하고, 미래의 자기 의지를 과신합니다. 처방은 설명이 아니라 설계였습니다 — 기본값을 이로운 쪽으로, 옵션은 두세 개로, 마찰은 바람직한 행동에서 걷어내고, 실수는 예상하고. 이번 주에 하나만 하십시오 — 진료 종료 멘트를 "다음 예약 잡아드렸습니다, 변경은 답장으로"로 바꾸는 것. 그리고 세 가지 질문을 벽에 붙이십시오. 중립은 없습니다. 그렇다면 의식적으로, 환자에게 좋은 방향으로.</p>
+        </article>
+
+        <section class="col-faq" aria-label="자주 묻는 질문">
+            <h2 class="col-faq__title">자주 묻는 질문</h2>
+            <details>
+                <summary>환자를 유도하는 것이 조작 아닌가요?</summary>
+                <p>중립적인 선택 설계는 존재하지 않는다는 것이 이 책의 출발점입니다. 안내문의 문구, 옵션의 순서, 다음 예약의 기본값은 이미 매 순간 환자의 선택에 영향을 주고 있습니다. 남은 선택지는 영향을 줄지 말지가 아니라 무의식적으로 줄지 의식적으로 좋은 방향으로 줄지입니다. 경계는 세 질문으로 긋습니다 — 환자 이익이 기준인가, 환자에게 그대로 설명해도 부끄럽지 않은가, 거절과 취소가 진입만큼 쉬운가. 하나라도 아니오라면 넛지가 아니라 조작이므로 하지 않는 것이 맞습니다.</p>
+            </details>
+            <details>
+                <summary>다음 예약을 기본으로 잡아두면 환자가 불편해하지 않나요?</summary>
+                <p>취소가 진입만큼 쉬우면 대부분 불편해하지 않습니다. 핵심은 "생각해 보고 연락 주세요"와 "가예약을 잡아두고 어려우시면 취소만 주세요"가 같은 자유와 같은 선택권을 주면서 아무것도 하지 않았을 때의 도착점만 다르다는 것입니다. 인간은 기본값에 머물고 자신의 미래 실행력을 과대평가하므로, 환자의 "다음 주에 전화드릴게요"에 아무것도 걸지 않는 설계가 환자에게도 이롭습니다. 이유를 환자에게 그대로 설명하고, 변경은 답장 한 통으로 끝나게 하고, 도입 전후의 취소·불만 건수를 비교해 확인하십시오.</p>
+            </details>
+            <details>
+                <summary>고령 환자가 많은 병원에도 이런 설계가 통하나요?</summary>
+                <p>오히려 더 잘 통합니다. 넛지는 인지 부담을 줄이는 기술이므로 정보 처리가 힘든 환자일수록 효과가 큽니다. 상담 옵션을 두세 개로 줄이는 것, 다음 예약을 병원이 잡아두는 것, 전날과 당일의 이중 리마인드, 아침·점심·저녁 칸이 그려진 약 봉투 같은 오류 관용 설계는 고령 환자에게 가장 먼저 체감됩니다. 그리고 어떤 넛지든 도입 전후 지표를 비교하는 것까지가 한 세트입니다. 측정 없는 넛지는 인테리어일 뿐이라는 것이 이 책의 결론입니다.</p>
+            </details>
+        </section>
+
+        <aside class="col-author">
+            <div class="col-author__badge" aria-hidden="true">文</div>
+            <div>
+                <p class="col-author__name">문석준</p>
+                <p class="col-author__role">서울비디치과 대표원장 · Patient Funnel 창립자</p>
+                <p class="col-author__bio">서울대학교 치의학과·치의학대학원 졸업, 통합치의학과 전문의. 병원을 직접 운영하며 만든 '페이션트 퍼널' 시스템으로 6,000명 이상의 대표원장들과 병원 경영을 공부하고 있습니다. "필요한 진료를 받지 못하는 사람이 없도록 하자"가 이 모든 일의 이유입니다.</p>
+            </div>
+        </aside>
+
+        <nav class="col-nav" aria-label="이전/다음 글">
+            <a href="staff-conflict">
+                <span class="lbl">이전 글</span>
+                <span class="ttl">병원 직원 갈등 관리 — 안전이 무너지면 내용을 멈춰라</span>
+            </a>
+            <a href="doctor-multiplier">
+                <span class="lbl">다음 글</span>
+                <span class="ttl">원장 리더십 — 원장이 똑똑할수록 직원이 멍청해지는 병원</span>
+            </a>
+        </nav>
+
+        <section class="col-cta">
+            <div class="col-cta__inner">
+                <h2 class="col-cta__title">설명을 늘리기 전에 설계를 바꾸는 병원</h2>
+                <p class="col-cta__desc">예약·상담·리콜의 기본값 — 환자에게 이로운 선택이 쉬워지는 퍼널 설계를 페이션트 퍼널 무료 웨비나에서 공개합니다.</p>
+                <a href="https://dentalfunnel.liveklass.com/" target="_blank" rel="noopener" class="col-cta__btn">무료 웨비나 신청하기 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="col-footer">
+        <div class="container">
+            <div class="col-footer__links">
+                <a href="../">홈</a>
+                <a href="../blog/">블로그</a>
+                <a href="./">칼럼</a>
+                <a href="../terms/">이용약관</a>
+                <a href="../privacy/">개인정보처리방침</a>
+                <a href="../refund/">환불규정</a>
+            </div>
+            <div class="col-footer__biz">
+                <p><strong>상호:</strong> 페이션트퍼널 | <strong>대표:</strong> 문석준</p>
+                <p><strong>사업자등록번호:</strong> 469-01-03014 | <strong>통신판매업신고:</strong> 제2024-서울강남-03817호</p>
+                <p><strong>주소:</strong> 서울특별시 강남구 영동대로 602, 6층 z208 (삼성동, 삼성동 미켈란 107)</p>
+                <p><strong>연락처:</strong> 010-4445-1873 | <strong>이메일:</strong> patientsfunnel@gmail.com | <strong>호스팅:</strong> Cloudflare, Inc.</p>
+                <p>© 2026 Patient Funnel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -444,8 +444,6 @@
     .prose { font-size: 0.98rem; }
 }
 
-/* 진단 동선(본문 끝) — 본문 중간 웨비나 CTA는 골드, 진단은 시안으로 구분한다 */
-.article-cta--scan { background: linear-gradient(135deg, rgba(34,211,238,0.10), rgba(52,211,153,0.06)); border-color: rgba(34,211,238,0.30); }
-.article-cta--scan::before { opacity: 0.18; }
-.article-cta--scan .btn--glow { background: linear-gradient(135deg, var(--cyan) 0%, var(--emerald) 100%); background-size: 100% 100%; animation: none; box-shadow: 0 0 40px rgba(34,211,238,0.22), var(--sh-inner-strong); }
-.article-cta--scan .btn--glow:hover { box-shadow: 0 0 62px rgba(34,211,238,0.38), var(--sh-inner-strong); }
+/* 본문 끝 마무리 CTA — 행선지는 본문 중간과 같은 웨비나지만, 톤을 낮춰 반복으로 보이지 않게 한다 */
+.article-cta--final { background: var(--surface-2); border-color: var(--b-2); }
+.article-cta--final::before { opacity: 0.12; }
